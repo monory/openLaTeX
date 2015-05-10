@@ -1,0 +1,122 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathtext}
+\usepackage{microtype}
+\usepackage[left=2cm,right=2cm,top=1cm,bottom=2cm]{geometry}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Определение}
+\newtheorem{problem}{Задача}
+
+
+\begin{document}
+\date{}
+\author{Тверской Денис\thanks{Сверстал Чудинов Никита}}
+\title{Листок 2. Геометрия и алгебра}
+\frenchspacing
+
+\maketitle
+
+\begin{definition}
+Множество $X\subset\mathbb{R}^n$ называется \emph{выпуклым}, если:
+\begin{equation*}
+\forall x,y \in X, \quad \Lambda x+(1-\Lambda)y \in X, \quad \forall \Lambda \in [0, 1];
+\end{equation*}
+\end{definition}
+
+\begin{definition}
+Вещественнозначная матрица $A$ называется \emph{неотрицательно определённой}, если скалярное произведение:
+\begin{equation*}
+	(x, Ax) \geq 0, \quad \forall x \in \mathbb{R}^n;
+\end{equation*}
+\end{definition}
+
+\begin{problem}
+Пусть $A$ --- симметричная, неотрицательно определённая матрица
+\begin{equation*}
+	M = \{x \in \mathbb{R}^n: (x, Ax) \leq k \}; \quad k \in \mathbb{R}^1_+;
+\end{equation*}
+Докажите, что $M$ --- выпуклое.
+\end{problem}
+
+\begin{problem}
+Пусть $L \subset \mathbb{R}^4$ --- пространство решений системы линейных уравнений
+\begin{equation*}
+	\begin{cases}
+		2x_1 + x_2 + x_4 = 0; \\
+		x_1 + x_3 = 0; \\
+		x_1 + x_2 + 3x_3 = 0;
+	\end{cases}
+\end{equation*}
+Найдите ортогональную проекцию вектора $x = %
+\biggl(\begin{smallmatrix}
+	1 \\
+	-1 \\
+	0 \\
+	2
+\end{smallmatrix}\biggr)$ на подпространство $L$, а также ортогональную составляющую вектора $x$.
+\end{problem}
+
+\begin{problem}
+Пусть $P$ --- проектор, $P: \mathbb{R}^n \rightarrow \mathbb{R}^n$. Верно ли, что матрица $(I+P)$ --- невырожденная?
+\end{problem}
+
+\begin{problem}
+Пусть $P,Q: \mathbb{R}^n \rightarrow \mathbb{R}^n$ --- проекторы. Докажите, что $(P+Q)$ --- проектор $\Leftrightarrow QP = PQ = 0$
+
+В случае, когда $(P+Q)$ является проектором, выразите ядро $(P+Q)$ через ядра $P$ и $Q$, образ $(P+Q)$ --- через образы $P$ и $Q$.
+\end{problem}
+
+\begin{problem}
+Пусть $A$ --- вещественнозначная ортогональная матрица порядка $n$, не имеющая действительных собственных чисел. Выберите все верные утверждения:
+\begin{enumerate}
+	\item $A^2$ имеет собственное число $(-1)$;
+	\item $n$ --- чётное;
+	\item $det A = 1$;
+	\item $A$ имеет одномерное инвариантное подпространство;
+	\item $A$ --- симметричная.
+\end{enumerate}
+\end{problem}
+
+\begin{problem}
+В $\mathbb{R}^4$ заданы три гиперплоскости
+\begin{equation*}
+	a_ix=0,
+	i=1,2,3;
+	a_1 = \begin{pmatrix}
+		1 \\
+		1 \\
+		0 \\
+		0 
+	\end{pmatrix};~
+	a_2 = \begin{pmatrix}
+		0 \\
+		1 \\
+		1 \\
+		0 
+	\end{pmatrix};~
+	a_3 = \begin{pmatrix}
+		0 \\
+		0 \\
+		1 \\
+		1 
+	\end{pmatrix};
+\end{equation*}
+Все три --- инвариантные подпространства некоторой вещественной ортогональной матрицы $Q_{4\times4}; Q \neq I, Q \neq -I$;
+Выберите все верные утверждения:
+\begin{enumerate}
+	\item У $Q$ бесконечно много инвариантных подпространств;
+	\item У $Q$ есть набор собственных векторов, из которых можно составить базис $\mathbb{R}^4$;
+	\item Имеется ровно $2^{15}$ различных матриц $Q$, удовлетворяющих условию задачи;
+	\item Вектор $x = \begin{pmatrix}1,3,4,2\end{pmatrix}$ --- собственный;
+	\item $Q$ --- симметричная;
+	\item Подпространство решений системы $x-Qx=0$ трёхмерное;
+	\item Если сумма элементов $Q$ больше нуля, то её характеристический многочлен убывает в окрестности нуля. 
+\end{enumerate}
+\end{problem}
+
+\end{document}
