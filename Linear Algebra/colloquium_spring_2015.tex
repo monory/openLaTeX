@@ -1,0 +1,668 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathtext}
+\usepackage{mathtools}
+\usepackage{microtype}
+\usepackage{cleveref}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\crefformat{footnote}{#2\footnotemark[#1]#3}
+
+\theoremstyle{remark}
+\newtheorem*{note}{Заметка}
+\theoremstyle{definition}
+\newtheorem{question}{Вопрос}
+
+
+\begin{document}
+\author{Чудинов Никита (группа 104)\thanks{Отдельное спасибо 104 группе за помощь в исправлении ошибок и предоставлении материала.}}
+\date{}
+\title{\vspace{-2.0cm}Определения к коллоквиуму по линейной алгебре и геометрии 15-16~мая {\Large(v0.3)}}
+\frenchspacing
+
+
+\maketitle
+
+
+\begin{question}[Умножение комплексных чисел]
+Комплексным умножением называется операция
+\begin{equation*}
+	\begin{pmatrix}
+		a \\
+		b
+	\end{pmatrix}
+	\cdot
+	\begin{pmatrix}
+		a' \\
+		b'
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		aa' - bb' \\
+		ab' + ba'
+	\end{pmatrix}
+\end{equation*}
+\end{question}
+
+
+\begin{question}[Деление комплексных чисел]
+Если \(u = a + bi, v = c + di \in \mathbb{C}, v \neq 0\), то
+\begin{equation*}
+	\frac{u}{v} =
+	\frac{u \cdot \bar{v}}{v \cdot \bar{v}} =
+	\frac{u \cdot \bar{v}}{|v^2|}; \quad
+	\frac{a + bi}{c + di} = 
+	\frac{(a + bi)(c - di)}{(c + di)(c - di)} =
+	\frac{ac + bd}{c^2 + d^2} + \left(\frac{bc - ad}{c^2 + d^2}\right)i
+\end{equation*}
+\end{question}
+
+
+\begin{question}[Аргумент комплексного числа]
+\emph{Малый аргумент} комплексного числа \(z = a + bi\) --- такой угол \(\varphi =  \mathrm{arg}(z)\), что 
+\begin{equation*}
+	\begin{dcases}
+		\sin \varphi = \frac{b}{|z|} \\
+		\cos \varphi = \frac{a}{|z|} \\
+		0 \leqslant \varphi \leqslant 2\pi
+	\end{dcases}
+\end{equation*}
+\begin{equation*}
+	\mathrm{arg}(z) = \arccos \frac{a}{|z|} = \arcsin \frac{b}{|z|} = \arctg \frac{b}{a}
+\end{equation*}
+
+\emph{Большой аргумент} комплексного числа \(z = a + bi\) --- множество всех углов \(\varphi\) таких, что
+\begin{equation*}
+	\begin{dcases}
+		\sin \varphi = \frac{b}{|z|} \\
+		\cos \varphi = \frac{a}{|z|} 
+	\end{dcases}
+\end{equation*}
+то есть
+\begin{equation*}
+	\mathrm{Arg}(z) = \{\mathrm{arg}(z) + 2\pi{}n;\;n \in \mathbb{Z}\}
+\end{equation*}
+\end{question}
+	
+
+\begin{question}[Сопряжение комплексных чисел и его геометрический смысл]
+Число \(\bar{z} = a - bi\) называется \emph{сопряжённым} к числу \(z = a + bi\). Геометрически сопряжение --- это зеркальное отражение относительно оси \(OX\).
+\end{question}
+
+
+
+\begin{question}[Модуль комплексного числа]
+Модуль комплексного числа \(z = a + bi\) --- это длина вектора \(z\), то есть 
+\begin{equation*}
+	|z| = \sqrt{a^2 + b^2}
+\end{equation*}
+\end{question}
+
+
+\begin{question}[Основная теорема алгебры]
+Всякий отличный от константы многочлен с комплексными коэффициентами имеет, по крайней мере, один корень на поле комплексных чисел.
+\end{question}
+
+
+\begin{question}[Что происходит с модулями при умножении комплексных чисел?]
+При произведении комплексных чисел модули перемножаются.
+\begin{equation*}
+	|z_1 \cdot z_2|= |z_1| \cdot |z_2|
+\end{equation*}
+\end{question}
+
+
+\begin{question}[Как найти аргумент произведения двух комплексных чисел, зная аргументы множителей?]
+При произведении комплексных чисел аргументы складываются.
+\begin{equation*}
+	\mathrm{arg}(z_1 \cdot z_2) \equiv \mathrm{arg}(z_1) + \mathrm{arg}(z_2) \pmod{2\pi}
+\end{equation*}
+\end{question}
+
+
+\begin{question}[Сколько комплексных решений может иметь уравнение \(z^n = a\), где \(a \in \mathbb{C}\)?]
+При \(a \neq 0\) у числа \(a\) будет ровно \(n\) корней \(n\)-ной степени. При \(a = 0\) у числа будет один корень, \(0\).
+\end{question}
+
+
+\begin{question}
+Корни \(n\)-ной степени числа \(z^n = a\) вычисляются по формуле 
+\begin{equation*}
+	\sqrt[n]{a} = \{x_0, \dots, x_{n-1}\}; \quad
+	x_k = \sqrt[n]{|a|} \cdot e^{i \frac{\varphi + 2\pi{}k}{n}}
+\end{equation*}
+\end{question}
+
+
+\begin{question}[Комплексификация действительного пространства]
+Пусть \(W_{\mathbb{R}}\) --- действительное пространство. Тогда \emph{комплексификация} пространства \(W = W_{\mathbb{R}}\) --- это множество
+\begin{equation*}
+	W_{\mathbb{C}} = W \times W = \{(u, v);\;u, v \in W\}
+\end{equation*}
+с операцией
+\begin{equation*}
+	(a + bi)(\vec{u}, \vec{v}) = (a\vec{u} - b\vec{v}, a\vec{v} + b\vec{u})
+\end{equation*}
+При этом мы отождествляем \(w \in W\) с \((w, 0)\). Тогда \(i \cdot w = (0, w)\).
+\end{question}
+
+
+\begin{question}[Овеществление комплексного пространства]
+Пусть \(V\) --- комплексное линейное пространство. Тогда \emph{овеществление} пространства \(V\) --- это то же множество \(V\), рассмотренное как пространство над \(\mathbb{R}\). Так как \(\mathbb{R} \subset \mathbb{C}\), то это возможно. Обозначается \(V_{\mathbb{R}}\).
+
+Таким образом при овеществлении <<забывается>>, как умножать на мнимую единицу.
+
+Пример: \(\mathbb{C}_{\mathbb{R}} = \mathbb{R}^2\)
+\end{question}
+
+
+\begin{question}[Кратность корня многочлена] 
+Говорят, что корень \(c\) имеет кратность \(m\), если рассматриваемый многочлен делится на \((x-c)^m\) и не делится на \((x-c)^{m+1}\).
+\end{question}
+
+
+\begin{question}[Теорема Виета для многочлена \(n\)-й степени]
+Если \(c_1,c_2,\dots,c_n\) --- корни многочлена \(x^n + a_{n-1}x^{n-1} + a_{n-2}x^{n-2} + \dots + a_0 = 0\) (каждый корень взят соответствующее его кратности число раз), то коэффициенты \(a_{n-1}, \dots, a_0\) выражаются в виде многочленов от корней, а именно:
+\begin{align*}
+    a_{n-1} &= -(c_1 + c_2 + \dots + c_n) \\
+    a_{n-2} &= c_1c_2 + c_1c_3 + \dots + c_1c_n + c_2c_3 + \dots + c_{n-1}c_n \\
+    \dots &= \dots \\
+    a_{k} &= \sum_{1 \leqslant j_1 \leqslant \dots < j_{n-k} \leqslant}(-1)^{n-k} x_{j_1} \dots x_{j_{n-k}} \\
+    \dots &= \dots \\
+    a_1 &= (-1)^{n-1}(c_1c_2\dots{}c_{n-1} + c_1c_2\dots{}c_{n-2}c_n + \dots + c_2c_3\dots{}c_n) \\
+    a_0 &= (-1)^nc_1c_2\dots{}c_n
+\end{align*}
+\end{question}
+
+\begin{question}[Матрица перехода от одного базиса к другому]
+Матрицей перехода от базиса \(a\) к базису \(b\) (или матрицей замены координат) называется такая матрица \(n \times n\)
+\begin{equation*}
+    T = T_{a \rightarrow b} = (t_{ij})_{n \times n}
+\end{equation*}
+у которой в \(j\)-том столбце стоит вектор-столбец \((b_j)_a\) --- координаты \(\vec{b_j}\) в базисе \(a\), то есть
+\begin{equation*}
+    (b_j)_a =
+    \begin{pmatrix}
+        t_{1j} \\
+        \vdots \\
+        t_{nj}
+    \end{pmatrix} 
+\end{equation*}
+\end{question}
+
+
+\begin{question}[Как связаны координаты одного и того же вектора в разных базисах?]
+\(\forall \vec{x} \in V\) связь координат вектора \(\vec{x}\) в базисах \(a\) и \(b\) определяется формулой
+\begin{equation*}
+     \vec{x_a} = T_{a \rightarrow b}\vec{x_b}
+\end{equation*} 
+\end{question}
+
+
+\begin{question}[Линейный функционал]
+Линейный функционал (линейная форма) на \(V\) --- линейное отображение из \(V\) в \(F\).
+\end{question}
+
+
+\begin{question}[Пространство, двойственное к данному\footnote{\label{notfound}Я не нашёл этого материала в конспектах Ярослава, так что пришлось взять из интернета (в основном, Википедии). При неточностях и расхождениях с действительным материалом, сообщите, пожалуйста, мне.}]
+Сопряжённым, или двойственным, пространством к данному, называют множество линейных функционалов на данном линейном пространстве. Обозначается \(E^*\).
+\end{question}
+
+
+\begin{question}[Линейное отображение]
+Отображение \(\varphi\) из линейного пространства \(V\) в линейное пространство \(W\) над одним и тем же полем \(F\) называется линейным, если для любых \(x, y \in V\) и \(\alpha \in F\) выполняется
+\begin{align*}
+    &1)\quad\varphi(x + y) = \varphi(x) + \varphi(y) \\
+    &2)\quad\varphi(\alpha{}x) = \alpha\varphi{}
+\end{align*}
+\end{question}
+
+
+\begin{question}[Линейный оператор]
+Линейное отображение пространства в само себя называется линейным оператором.
+\end{question}
+
+
+\begin{question}[Изоморфизм линейных пространств]
+Если линейное отображение \(\varphi: V \rightarrow W\) является биекцией (взаимно однозначным), то оно называется изоморфизмом. 
+
+Два пространства называются изоморфными, если между ними есть изоморфизм. Обозначается \(V \simeq W\) или \(V \approx W\).
+\end{question}
+
+
+\begin{question}[Матрица линейного отображения]
+Пусть \(\varphi: V \rightarrow W\) --- линейное отображение из \(n\)-мерного пространства в \(m\)-мерное над полем \(F\), и пусть \(b \subset V\), \(c \subset W\) --- базисы в этих пространствах. Тогда для любой \(m \times n\) матрицы \(A \in \mathrm{Mat}_{m \times n}(F)\) следующие два условия эквивалентны:
+\begin{enumerate}
+	\item Для любого \(j = 1 \dots n\) столбец с номером \(j\) матрицы \(A\) составляет координаты вектора \(\varphi(b_j)\) в базисе \(c\) (где \(b = \{b_1, \dots, b_n\}\))
+	\item \(\forall x \in V\!: \varphi(x)_c = A \cdot (x_b)\).
+\end{enumerate}
+Это матрица линейного отображения \(\varphi\) в базисах \(b\) и \(c\). Обозначается \(A(\varphi)_c = {}_b\varphi_c\).
+\end{question}
+
+
+\begin{question}[Матрица оператора поворота плоскости на угол \(\alpha{}\), записанная в стандартном базисе\cref{notfound}]
+В двумерном пространстве поворот можно описать одним углом \(\alpha\) со следующей матрицей линейного преобразования:
+\begin{equation*}
+	M(\alpha) =
+	\begin{pmatrix}
+		\cos \alpha & -\sin \alpha \\
+		\sin \alpha & cos \alpha
+	\end{pmatrix}
+\end{equation*}
+\end{question}
+
+
+\begin{question}[Как меняется матрица линейного оператора при замене базиса?]
+Если \(b, b'\) --- два базиса в \(V\), \(\varphi: V \rightarrow V\) --- линейный оператор
+\begin{equation*}
+	A = \varphi_b = {}_b\varphi_b; \quad A' = \varphi_{b'} = {}_{b'}\varphi_{b'}
+\end{equation*}
+--- его матрицы в разных базисах, то
+\begin{equation*}
+	A' = T^{-1}AT,
+\end{equation*}
+где \(T = T_{b \rightarrow b'}\).
+\end{question}
+
+
+\begin{question}[Какими условиями характеризуется матрица изоморфизма линейных пространств?]
+Если \(A\) --- матрица изоморфизма, то она невырожденная, то есть \(\det A \neq 0\). Из-за невырожденности, у неё всегда есть обратная матрица \(A^{-1}\).
+\end{question}
+
+
+\begin{question}[Ядро линейного отображения]
+Ядро линейного отображения \(\varphi\) --- это полный прообраз нулевого вектора, то есть 
+\begin{equation*}
+	\mathrm{Ker}\varphi = \{\vec{x} \in V: \varphi(\vec{x}) = \vec{0}\}
+\end{equation*}
+\end{question}
+
+
+\begin{question}[Образ линейного отображения]
+Образ линейного отображения \(\varphi\) --- это множество его значений. Обозначается Im \(\varphi\).
+\end{question}
+
+
+\begin{question}[Как найти размерности ядра и образа матрицы, зная её ранг и размеры?]
+Размерность образа линейного отображения --- ранг его матрицы
+\begin{equation*}
+	\dim(\mathrm{Im}\,y) = \mathrm{rk}\,A
+\end{equation*}
+
+Размерность ядра линейного отображения --- размерность пространства минус ранг его матрицы
+\begin{equation*}
+	\dim(\mathrm{Ker}\,y) = n - \mathrm{rk}\,A
+\end{equation*}
+\end{question}
+
+
+\begin{question}[Инвариантное подпространство линейного оператора]
+Инвариантным подпространством оператора \(\varphi: V \rightarrow V\) называется такое подпространство \(W \subseteq V\), что \(\varphi(W) \subseteq W\).
+\end{question}
+
+
+\begin{question}[Как выглядит матрица линейного оператора, если первые \(k\) векторов базиса составляют базис некоторого инвариантного подпространства этого оператора?]
+Матрица \(\varphi_b\) линейного оператора \(\varphi: V \rightarrow V\) (где dim \(V = n\)) имеет вид
+\begin{equation*}
+	\varphi_b =
+	\left(\begin{array}{c | c}
+		P & Q \\
+		\hline
+		0 & R
+	\end{array}\right),
+\end{equation*}
+где \(P \in \mathrm{Mat}_{k \times k}, R \in \mathrm{Mat}_{(n-k) \times (n-k)}\) в том и только том случае, когда первые \(k\) базисных векторов порождают инвариантное подпространство \(W \subseteq V\).
+\end{question}
+
+
+\begin{question}[Собственные значения линейного оператора]
+\(\lambda\) называется собственным значением линейного оператора \(\varphi\), если
+\begin{equation*}
+	\varphi(\vec{x}) = \lambda\vec{x}
+\end{equation*}
+для некоторого \(\vec{x} \in V\).
+\end{question}
+
+
+\begin{question}[Собственные векторы линейного оператора]
+Ненулевой вектор \(\vec{x}\) называется собственным вектором оператора \(\varphi\), если
+\begin{equation*}
+	\varphi(\vec{x}) = \lambda\vec{x}
+\end{equation*}
+для некоторого \(\lambda \in F\).
+\end{question}
+
+
+\begin{question}[Характеристический многочлен линейного оператора]
+Характеристическим многочленом матрицы \(A\) называется многочлен от переменной \(\lambda\)
+\begin{equation*}
+	\chi(A) = \det A_{\lambda} = \det (A - \lambda{}E)
+\end{equation*}
+\end{question}
+
+
+\begin{question}[Как связаны коэффициенты характеристического многочлена с собственными значениями линейного оператора?\cref{notfound}]
+\end{question}
+
+
+\begin{question}[Как характеристический многочлен линейного оператора связан со следом матрицы этого оператора?]
+Коэффициент при степени \(n-1\) равен следу матрицы с точностью до знака:
+\begin{align*}
+	\chi_A(1) &= (-1)^n\lambda^n + a_{n-1}\lambda^{n-1} + \dots + a_0 \\
+	a_{n-1} &= (-1)^{n-1}\,\mathrm{tr}\,A
+\end{align*}
+\end{question}
+
+
+\begin{question}[Как определитель матрицы связан с его характеристическим многочленом?]
+\begin{align*}
+	\chi(\lambda) &= \det (A - \lambda \cdot E) = \det (A) - \det (\lambda \cdot E) \\
+	\chi(0) &= \det (A - 0 \cdot E) = \det (A)	
+\end{align*}
+\end{question}
+
+
+\begin{question}[Как, зная собственные значения линейного оператора и их кратности, найти след и определитель этого оператора?]
+Согласно теореме Виета, 
+\begin{align*}
+	\det A &= a_0 = \lambda_1 \dots \lambda_n \\
+	\mathrm{tr}\,A &= a_{n-1} = (-1)^{n-1} (\lambda_1 + \dots + \lambda_n)
+\end{align*}
+\end{question}
+
+
+\begin{question}[Какой вид имеет матрица линейного оператора, если все векторы базиса являются его собственными векторами?]
+Матрица имеет верхнетреугольный вид.
+\end{question}
+
+
+\begin{question}[Собственное пространство линейного оператора\cref{notfound}]
+Множество всех векторов, являющихся линейными комбинациями собственных векторов и нулевой вектор называют собственным пространством.
+\end{question}
+
+
+\begin{question}[Корневое подпространство линейного оператора\cref{notfound}]
+Корневым вектором линейного преобразования \(A\) для данного собственного значения \(\lambda \in F\) называется такой ненулевой вектор \(x \in V\), что для некоторого натурального числа \(m\)
+\begin{equation*}
+ 	(A - \lambda \cdot E)^mx = 0
+\end{equation*} 
+
+Корневым подпространством линейного преобразования \(A\) для данного собственного числа \(\lambda \in F\) называется множество всех корневых векторов \(x \in V\), соответствующих данному числу (дополненное нулевым вектором).
+\begin{equation*}
+	V_{\lambda} = \bigcup_{m = 1}^{\infty} \ker(A - \lambda \cdot E)^m
+\end{equation*}
+\end{question}
+
+
+\begin{question}[Размерность корневого пространства в конечномерном комплексном пространстве]
+Размерность корневого подпространства \(V_{\lambda_i}\) равна кратности собственного значения.
+\end{question}
+
+
+\begin{question}[Корневой вектор]
+Корневым вектором линейного преобразования \(A\) для данного собственного значения \(\lambda \in F\) называется такой ненулевой вектор \(x \in V\), что для некоторого натурального числа \(m\)
+\begin{equation*}
+ 	(A - \lambda \cdot E)^mx = 0
+\end{equation*} 
+\end{question}
+
+
+\begin{question}[Высота корневого вектора]
+Если для некоторого собственного значения \(\lambda \in F\) и вектора \(x\) какое-то число \(m\) является наименьшим, при котором выполняется условие \((A - \lambda \cdot E)^mx = 0\), то есть \((A - \lambda \cdot E)^{m-1}x \neq 0\), то \(m\) называется высотой корневого вектора \(x\).
+\end{question}
+
+
+\begin{question}[Жорданова форма матрицы]
+Матрица принимает жорданову форму в том случае, если она имеет блочно-диагональный вид, при этом каждый блок имеет вид
+\begin{equation*}
+	J^{c_i}_{\lambda_i} = 
+	\begin{pmatrix}
+		\lambda_i & 1 & \dots & 0 & 0 \\
+		0 & \lambda_i & \dots & 0 & 0 \\
+		\vdots & \ddots & \ddots & \vdots & \vdots \\
+		\vdots & & \ddots & \lambda_i & 1 \\
+		0 & \dots & \dots & 0 & \lambda_i
+	\end{pmatrix},
+\end{equation*}
+который называется жордановой клеткой порядка \(c_i\) (блок имеет размер \(c_i \times c_i\)).
+\end{question}
+
+
+\begin{question}[Теорема о жордановой форме линейного оператора в конечномерном комплексном пространстве]
+Для любого линейного оператора \(A: \mathbb{C}^n \rightarrow \mathbb{C}^n\) существует базис \(j\) в \(\mathbb{C}^n\) (жорданов базис) такой, что в этом базисе матрица принимает вид
+\begin{equation*}
+	A_j = J_A = \mathrm{diag}(J_{\lambda_1}^{c_1}, \dots, J_{\lambda_t}^{c_t}),
+\end{equation*}
+где \(J_{\lambda}^{c}\) --- жорданова клетка, а \(\lambda_1, \dots, \lambda_t\) --- все собственные значения (возможно, повторяющиеся, но необязательно с учётом кратностей). При этом матрица \(J_A\) единственна с точностью до перестановки клеток.
+\end{question}
+
+
+\begin{question}[Билинейная форма]
+Функция \(B: V \times V \rightarrow F\) (то есть \(B(\vec{x}, \vec{y}) \in F\), где \(\vec{x}, \vec{y} \in V\)) называется билинейной, если она линейна по \(x\) и по \(y\), то есть
+\begin{align*}
+	B(x + x', y) &= B(x, y) + B(x', y) \\
+	B(x, y + y') &= B(x, y) + B(x, y') \\
+	\alpha{}B(x, y) &= B(\alpha{}x, y) = B(x, \alpha{}y)
+\end{align*}
+\end{question}
+
+
+\begin{question}[Симметрическая билинейная форма]
+Билинейная форма называется симметрической, если \(\forall x,y \in V\)
+\begin{equation*}
+	B(x, y) = B(y, x)
+\end{equation*}
+\end{question}
+
+
+\begin{question}[Матрица билинейной формы]
+Пусть \(e\) --- базис в \(V\), а \(B\) --- билинейная форма на \(V\). Обозначим через \(B_e\) матрицу \(B_e = (b_{ij})_{n \times n}\) --- матрица билинейной формы \(B\) в базисе \(e\). Тогда:
+\begin{enumerate}
+	\item \(\forall \vec{x}, \vec{y} \in V\)
+	\begin{equation*}
+		B(\vec{x}, \vec{y}) = \vec{x}_e^T B_e \vec{y}_e
+	\end{equation*}
+	\item Если для какой-то матрицы \(M\) и для любых \(\vec{x}, \vec{y} \in V\) 
+	\begin{equation*}
+		B(\vec{x}, \vec{y}) = \vec{x}_e^T M \vec{y}_e,
+	\end{equation*}
+	то \(M = B_e\).
+\end{enumerate}
+\end{question}
+
+
+\begin{question}[Как меняется матрица билинейной формы при замене координат?]
+Если \(e, e' \subset V\) --- два базиса, \(C = T_{e \rightarrow e'}\), то 
+\begin{equation*}
+	B_{e'} = C^T B_e C
+\end{equation*}
+\end{question}
+
+
+\begin{question}[Как меняется матрица квадратичной формы при замене координат?]
+Если \(e, e' \subset V\) --- два базиса, \(C = T_{e \rightarrow e'}\), то 
+\begin{equation*}
+	Q_{e'} = C^T Q_e C
+\end{equation*}
+\end{question}
+
+
+\begin{question}[Квадратичная форма]
+Пусть \(B\) --- билинейная форма на векторном пространстве \(V\) над полем \(F\). Тогда функция \(Q: V \rightarrow F\):
+\begin{equation*}
+	Q(\vec{x}) = B(\vec{x}, \vec{x})
+\end{equation*}
+называется квадратичной формой на \(V\).
+\end{question}
+
+
+\begin{note}[Канонический и нормальный вид квадратичной формы]
+Квадратичная форма \(Q\) имеет в базисе \(e\) канонический вид, если
+\begin{equation*}
+	Q(\vec{x}) = \alpha_1x_1^2 + \alpha_2x_2^2 + \dots + a_nx_n^2
+\end{equation*}
+для \(\vec{x}_e = \begin{pmatrix}x1 \\ \vdots \\ xn \end{pmatrix}\), то есть \(Q_e = \mathrm{diag}(\alpha_1, \alpha_2, \dots, \alpha_n)\), и нормальный вид, если все \(\alpha_i\) равны \(1\), \(-1\), \(0\).
+\end{note}
+
+
+\begin{question}[Индексы инерции квадратичной формы]
+Пусть \(i_+, i_-, i_0\) --- число положительных, отрицательных и нулевых коэффициентов \(\alpha{}_i\) в каноническом виде соответственно. Тогда набор чисел \((i_+, i_-, i_0)\) называется индексами инерции и не зависит от выбора канонического вида, то есть его можно однозначно определить по форме \(Q\). 
+\end{question}
+
+
+\begin{question}[Сигнатура квадратичной формы]
+Разность между положительным индексом квадратичной формы и отрицательным индексом называется сигнатурой квадратичной формы.
+\end{question}
+
+
+\begin{question}[Положительно определённая квадратичная форма]
+Квадратичную форму \(Q\) называют положительно определённой, если \(\forall \vec{x} \neq 0: Q(\vec{x}) > 0\).
+\end{question}
+
+
+\begin{question}[Отрицательно определённая квадратичная форма]
+Квадратичную форму \(Q\) называют отрицательно определённой, если \(\forall \vec{x} \neq 0: Q(\vec{x}) < 0\).
+\end{question}
+
+\begin{note}[Угловые миноры]
+Угловым минором \(\Delta\) матрицы \(A\) называются определители вида
+\begin{align*}
+	\Delta_1 &= a_{11} \\
+	\Delta_2 &=
+		\begin{vmatrix}
+			a_{11} & a_{12} \\
+			a_{21} & a_{22}
+		\end{vmatrix} \\
+	\dots \\
+	\Delta_i &=
+		\begin{vmatrix}
+			a_{11} & a_{12} & \dots & a_{1i} \\
+			a_{21} & a_{22} & \dots & a_{2i} \\
+			\dots & \dots & \dots & \dots \\
+			a_{i1} & a_{i2} & \dots & a_{ii}
+		\end{vmatrix} 
+\end{align*}
+\end{note}
+
+\begin{question}[Критерий Сильвестра для положительно определённой квадратичной формы]
+Квадратичная форма положительно определена тогда и только тогда, когда все её угловые миноры \(\Delta_i\) положительны.
+\end{question}
+
+\begin{question}[Критерий Сильвестра для отрицательно определённой квадратичной формы]
+Квадратичная форма отрицательно определена тогда и только тогда, когда знаки её угловых миноров \(\Delta_i\) чередуются, при этом \(\Delta_1 < 0\).
+\end{question}
+
+
+\begin{question}[Полуторалинейная форма в комплексном пространстве]
+Пусть \(V\) --- комплексное линейное пространство, \(B(x,y): V \times V \rightarrow \mathbb{C}\). Тогда \(B\) называется полуторалинейной, если
+\begin{align*}
+	B(x + x', y) &= B(x, y) + B(x', y) \\
+	B(x, y + y') &= B(x, y) + B(x, y') \\
+	B(\alpha{}x, y) &= \alpha{}B(x, y) \\
+	B(x, \alpha{}y) &= \bar{\alpha}B(x, y)
+\end{align*}
+\end{question}
+
+
+\begin{question}[Эрмитова полуторалинейная форма]
+Полуторалинейная форма \(B\) называется эрмитовой, если для неё выполнено условие
+\begin{equation*}
+	B(x, y) = \overline{B(y, x)}
+\end{equation*}
+\end{question}
+
+
+\begin{question}[Эрмитово (или унитарное) пространство]
+Комплексное пространство, на котором задана положительно определённая эрмитова форма \(\langle \cdot , \cdot \rangle\) (скалярное произведение) называется эрмитовым. 
+\end{question}
+
+\begin{note}[Ортогональность векторов]
+Два вектора \(a\) и \(b\) называются ортогональными, если их скалярное произведение \(\langle a , b \rangle = 0\).
+\end{note}
+
+\begin{question}[Ортогональный базис в евклидовом и эрмитовом пространствах\cref{notfound}]
+Базис \(e\) в евклидовом и эрмитовом пространствах называется ортогональным, если он составлен из попарно ортогональных векторов.
+\begin{equation*}
+	\forall i,j \leqslant n;\; i, j \in \mathbb{N};\; i \neq j;\; \langle e_i, e_j \rangle = 0
+\end{equation*}
+\end{question}
+
+
+\begin{question}[Ортонормированный базис в евклидовом и эрмитовом пространствах\cref{notfound}]
+Базис \(e\) называется ортонормированным, если у всех его векторов единичная норма.
+\begin{equation*}
+	\forall i \in \mathbb{N};\; i \leqslant n;\; ||e_i|| = 1
+\end{equation*}
+\end{question}
+
+
+\begin{question}[Ортогональное дополнение линейного подпространства в евклидовом или эрмитовом пространстве\cref{notfound}]
+Ортогональное дополнение подпространства \(W\) векторного пространства \(V\) --- это множество всех векторов \(V\), ортогональных каждому из векторов в \(W\). Такое множество является векторным подпространством, которое обычно обозначается \(W^{\bot}\).
+\end{question}
+
+
+\begin{question}[Размерность ортогонального дополнения данного линейного подпространства в конечномерном евклидовом или эрмитовом пространстве\cref{notfound}]
+Пусть \(W\) --- \(k\)-мерное подпространство \(n\)-мерного евклидового или эрмитового пространства \(V\). Тогда \(W^{\bot}\) является \((n\!-\!k)\)-мерным подпространством \(V\), к тому же, \(V = W \sqcup W^{\bot}\).
+\end{question}
+
+
+\begin{question}[Что такое ортогональная проекция вектора на подпространство в евклидовом или эрмитовом пространстве?\cref{notfound}]
+Пусть \(W \subset V\) --- подпространство евклидова или эрмитова пространства. Для произвольного вектора \(v \in V\) запишем разложение \(v = v_1 + v_2\), где \(v_1 \in W\), а \(v_2 \in W^{\bot}\). Тогда вектор \(v_1\) называется ортогональной проекцией вектора \(v\) на подпространство \(W\) и обозначается \(\mathrm{pr}_Wv\).
+\end{question}
+
+
+\begin{question}[Что такое ортогональная составляющая вектора относительно подпространства в евклидовом или эрмитовом пространстве?\cref{notfound}]
+В продолжение предыдущего вопроса, вектор \(v_2 = v - \mathrm{pr}_Wv\) называется ортогональной составляющей вектора \(v\) относительно подпространства \(W\) и обозначается \(\mathrm{ort}_Wv\).
+\end{question}
+
+
+\begin{question}[Матрица Грама данной системы векторов в евклидовом или эрмитовом пространстве\cref{notfound}]
+Матрицей Грама системы векторов \(e_1, e_2, \dots, e_n\) называется следующая матрица:
+\begin{equation*}
+	\begin{pmatrix}
+		\langle e_1, e_1 \rangle & \langle e_1, e_2 \rangle & \dots & \langle e_1, e_n \rangle \\
+		\langle e_2, e_1 \rangle & \langle e_2, e_2 \rangle & \dots & \langle e_2, e_n \rangle \\
+		\dots & \dots & \dots & \dots \\
+		\langle e_n, e_1 \rangle & \langle e_n, e_2 \rangle & \dots & \langle e_n, e_n \rangle \\
+	\end{pmatrix}
+\end{equation*}
+\end{question}
+
+
+
+\stepcounter{question} % 68
+\stepcounter{question} % 69
+\stepcounter{question} % 70
+
+
+\begin{question}[Оператор, сопряжённый к данному]
+Оператор \(\psi\) называется сопряжённым к \(\varphi\) и обозначается как \(\psi = \varphi^*\), если
+\begin{equation*}
+	\langle x, \varphi(y) \rangle = \langle \psi(x), y \rangle
+\end{equation*}
+\end{question}
+
+
+\begin{question}[Самосопряжённый оператор]
+Оператор \(\varphi\) называется самосопряжённым, если он сопряжён сам себе, то есть \(\varphi^* = \varphi\).
+\end{question}
+
+
+\begin{note}[Самосопряжённая матрица]
+Эрмитова, или самосопряжённая матрица --- квадратная матрица в поле комплексных чисел, такая, что \(A^T = \bar{A}\).
+\end{note}
+
+
+\begin{question}[Какими свойствами характеризуется матрица самосопряжённого оператора в ортонормированном базисе?]
+В ортонормированном базисе матрица самосопряжённого оператора самосопряжена.
+\end{question}
+
+
+\Huge
+\(\mathfrak{To}\) \(\mathfrak{be}\) \(\mathfrak{continued...}\) 
+
+\end{document}
