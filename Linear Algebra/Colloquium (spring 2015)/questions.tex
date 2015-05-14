@@ -317,5 +317,135 @@
 \end{question}
 
 
+\section{Линейные пространства}
+\subsection{Билет 6}
+\begin{question}[Что такое сумма подпространств в произвольном линейном пространстве \(V\) над произвольным полем \(F\)?]
+Суммой подпространств \(U\) и \(W\) называется наименьшее подпространство в \(V\), содержащее \(U\) и \(W\), то есть 
+\begin{equation*}
+	U + W = \{u + w: u \in U, w \in W\}
+\end{equation*}
+\end{question}
+
+
+\begin{question}[Докажите, что сумма и пересечение двух подпространств \(U\) и \(W\) --- снова подпространство]
+Это доказательство очевидно и остаётся читателю как упражнение.
+\end{question}
+
+
+\begin{question}[Как размерности \(U + W\) и \(U \cap W\) связаны с размерностями пространств \(U\) и \(W\)?]\(\)
+\begin{equation*}
+	\dim U + \dim W = \dim (U + W) + \dim(U \cap W)
+\end{equation*}
+\begin{proof}
+Пусть \(F = U + W\), \(G = U \cap W\), \(\dim G = g\). Выберем в \(G\) базис \((e_1, e_2, \dots, e_g)\). Так как \(G \subset U\) и \(G \subset W\), базис \(G\) можно дополнить до базиса \(U\) и базиса \(W\). Пусть \(E_U = (e_1, \dots, e_g, p_1, \dots, p_u)\) --- базис подпространства \(U\) и пусть \(E_W = (e_1, \dots, e_g, q_1, \dots, q_w)\) --- базис подпространства \(W\). Покажем, что \(E_F = (e_1, \dots, e_g, p_1, \dots, p_u, q_1, \dots, q_w)\) --- базис подпространства \(F = U + W\). Для этого необходимо, чтобы они были линейно независимы и любой вектор пространства \(F\) можно было бы представить их линейной комбинацией.
+
+Докажем линейную независимость векторов \(E_F\). Пусть нулевой вектор пространства \(F\) представляется линейной комбинацией векторов \(E_F\) c некоторыми коэффициентами:
+\begin{equation*}
+	\alpha_1{}e_1 + \alpha_2{}e_2 + \dots + \alpha_g{}e_g + \beta_1{}p_1 + \dots + \beta_u{}p_u + \gamma_1{}q_1 + \dots + \gamma_w{}q_w = 0
+\end{equation*}
+\begin{equation*}
+	\alpha_1{}e_1 + \alpha_2{}e_2 + \dots + \alpha_g{}e_g + \beta_1{}p_1 + \dots + \beta_u{}p_u = -\gamma_1{}q_1 - \dots - \gamma_w{}q_w
+\end{equation*}
+Левая часть является вектором подпространства \(U\), а правая --- вектором подпространства \(W\), следовательно, вектор \(\xi\)
+\begin{equation*}
+	\xi = \alpha_1{}e_1 + \alpha_2{}e_2 + \dots + \alpha_g{}e_g + \beta_1{}p_1 + \dots + \beta_u{}p_u = -\gamma_1{}q_1 - \dots - \gamma_w{}q_w	
+\end{equation*}
+принадлежит пространству \(G = U \cap W\). В таком случае вектор \(\xi\) можно представить линейной комбинацией векторов подпространства \(G\):
+\begin{equation*}
+	\xi = \delta_1{}e_1 + \dots + \delta_g{}e_g 	
+\end{equation*}
+Из предыдущих уравнений имеем
+\begin{equation*}
+	\delta_1{}e_1 + \dots + \delta_g{}e_g = -\gamma_1{}q_1 - \dots - \gamma_w{}q_w
+\end{equation*}
+\begin{equation*}
+	\delta_1{}e_1 + \dots + \delta_g{}e_g + \gamma_1{}q_1 + \dots + \gamma_w{}q_w = 0
+\end{equation*}
+Но векторы \(e_1, \dots, e_g, q_1, \dots, q_w\) --- базис подпространства \(W\), следовательно, линейно независимы, следовательно, \(\delta_1 = \dots = \delta_g = q_1 = \dots = q_w = 0\), тогда \(0\) в \(E_F\) примет вид
+\begin{equation*}
+	\alpha_1{}e_1 + \alpha_2{}e_2 + \dots + \alpha_g{}e_g + \beta_1{}p_1 + \dots + \beta_u{}p_u = 0
+\end{equation*}
+Но это --- базис подпространства \(U\), а, значит, \(\alpha_1 = \dots = \alpha_g = \beta_1 = \dots = \beta_u = 0\). Подытоживая, получаем, что векторы \(E_F\) --- линейно независимые.
+
+Любой вектор \(z\) из \(F\), по определению суммы подпространств, можно представить суммой \(x + y, x \in U, y \in W\). В свою очередь, \(x\) представляется линейной комбинацией векторов \(E_U\), а \(y\) --- линейной комбинацией \(E_W\). Следовательно, векторы \(E_F\) порождают пространство \(F\). Получили, что \(E_F\) --- базис \(F\).
+
+Изучая базисы подпространств \(U\) и \(W\), имеем, что \(\dim U = g + u, \dim W = g + w, \dim (U + W) = g + u + w\), следовательно
+\begin{equation*}
+	\dim U + \dim W - \dim (U \cap W) = \dim (U + W) \qedhere
+\end{equation*}
+\end{proof}
+\end{question}
+
+
+\subsection{Билет 7}
+\begin{question}[Что такое матрица перехода от одного базиса линейного пространства к другому (она же --- матрица замены координат)?]
+Матрицей перехода от базиса \(a\) к базису \(b\) (или матрицей замены координат) называется такая матрица \(n \times n\)
+\begin{equation*}
+    T = T_{a \rightarrow b} = (t_{ij})_{n \times n}
+\end{equation*}
+у которой в \(j\)-том столбце стоит вектор-столбец \((b_j)_a\) --- координаты \(\vec{b_j}\) в базисе \(a\), то есть
+\begin{equation*}
+    (b_j)_a =
+    \begin{pmatrix}
+        t_{1j} \\
+        \vdots \\
+        t_{nj}
+    \end{pmatrix} 
+\end{equation*}
+\end{question}
+
+
+\begin{question}[Как с её помощью вычислять координаты вектора в различных базисах?]
+\(\forall \vec{x} \in V\) связь координат вектора \(\vec{x}\) в базисах \(a\) и \(b\) определяется формулой
+\begin{equation*}
+     \vec{x_a} = T_{a \rightarrow b}\vec{x_b}
+\end{equation*} 
+
+Пусть \(x_1, \dots, x_n\) --- координаты вектора \(x\) в базисе \(a_1, \dots, a_n\), а \(x'_1, \dots, x'_n\) --- координаты в базисе \(b_1, \dots, b_n\). Тогда два набора координат связаны следующими формулами:
+\begin{align*}
+	x_1 &= t_{11}x'_1 + \dots + t_{1n}x'_n \\
+	\dots &= \dots \\
+	x_n &= t_{n1}x'_1 + \dots + t_{nn}x'_n
+\end{align*}
+
+\begin{proof}
+\begin{align*}
+	&x = x'_1b_1 + \dots + x'_nb_n = \\ 
+	&x'_1(t_{11}a_1 + \dots + t_{n1}a_n) + \dots + x'_n(t_{1n}a_1 + \dots + t_{nn}a_n) = \\ 
+	&(t_{11}x'_1 + \dots + t_{1n}x'_n)a_1 + \dots + (t_{n1}x'_1 + \dots + t_{nn}x'_n)a_n = \\
+	&x_1a_1 + \dots + x_na_n
+\end{align*}
+Так как \(a_1, \dots, a_n\) --- базис, мы получаем, что \(x_i = t_{i1}x'_1 + \dots + t_{in}x'_n\) для \(i = 1, \dots, n\).
+\end{proof}
+\end{question}
+
+\begin{question}[Как связаны матрицы перехода от одного базисак другому, от другого --- к третьему и от первого --- к третьему?]
+Пусть имеются три базиса \(e, f, g\) пространства \(V\) и известны матрицы перехода \(T_{e \rightarrow f}, T_{f \rightarrow g}, T_{e \rightarrow g}\). Тогда
+\begin{equation*}
+	T_{e \rightarrow g} = T_{e \rightarrow f} \cdot T_{f \rightarrow g}
+\end{equation*}
+
+\begin{proof}
+\begin{align*}
+	f &= e \cdot T_{e \rightarrow f} \\
+	g &= f \cdot T_{f \rightarrow g} \\
+	g &= e \cdot T_{e \rightarrow g}
+\end{align*}
+Подставляя первое выражение во второе равенство, получаем \(g = e \cdot T_{e \rightarrow f} \cdot T_{f \rightarrow g}\). Сравнивая с третьим равенством, приходим к изначальному утверждению.
+\end{proof}
+\end{question}
+
+
+\begin{question}[Докажите, что матрица замены координат в линейном пространстве всегда невырожденная]\(\)
+\begin{proof}
+Очевидно, что матрицей перехода из базиса \(e\) в базис \(e\) является единичная матрица \(E\). Используем предыдущее утверждение, при \(g = e\).
+\begin{align*}
+	g &= e \cdot T_{e \rightarrow f} \cdot T_{f \rightarrow g} \\
+	e &= e \cdot T_{e \rightarrow f} \cdot T_{f \rightarrow g} \\
+	E &= T_{e \rightarrow f} \cdot T_{f \rightarrow g}
+\end{align*}
+Следовательно, всегда существует матрица перехода в другую сторону, она равняется обратной матрице перехода и всегда невырождена.
+\end{proof}
+\end{question}
 
 \end{document}
