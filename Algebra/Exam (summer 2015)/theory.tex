@@ -1,0 +1,222 @@
+\documentclass[a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathtext}
+\usepackage{mathtools}
+\usepackage{microtype}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\theoremstyle{plain}
+\newtheorem*{theorem}{Теорема}
+\newtheorem{proposal}{Предложение}
+\theoremstyle{definition}
+\newtheorem{definition}{Определение}
+\numberwithin{definition}{section}
+\numberwithin{proposal}{section}
+
+\newcommand{\im}{\mathrm{im}}
+
+\everymath{\displaystyle}
+\begin{document}
+\sloppy
+\author{Чудинов Никита (группа 14-4)}
+\date{}
+\title{\vspace{-1.7cm}Краткая теория к экзамену по высшей алгебре 19-20 июня 2015}
+\frenchspacing
+
+\maketitle
+
+\section{Лекция 1}
+
+\begin{definition}
+\emph{Множество с бинарной операцией} --- это множество \(M\) с заданным отображением
+\begin{equation*}
+	M \times M \rightarrow M, \quad (a, b) \mapsto a \circ b.
+\end{equation*}
+\end{definition}
+
+\begin{definition}
+Множество с бинарной операцией \((M, \circ)\) называется \emph{полугруппой}, если данная бинарная операция ассоциативна, то есть
+\begin{equation*}
+	a \circ (b \circ c) = (a \circ b) \circ c, \quad \forall a,b,c \in M.
+\end{equation*}
+\end{definition}
+
+\begin{definition}
+Полугруппа \((S, \circ)\) называется \emph{моноидом}, если в ней есть \emph{нейтральный элемент} \(e \in S\), такой, что
+\begin{equation*}
+	\forall a \in S: \quad e \circ a = a \circ e = a.
+\end{equation*}
+\end{definition}
+
+\begin{definition}
+Моноид называется \emph{группой}, если для каждого элемента \(a \in S\) найдётся \emph{обратный элемент} \(a^{-1}\), такой, что
+\begin{equation*}
+	a \circ a^{-1} = a^{-1} \circ a = e.
+\end{equation*}
+\end{definition}
+
+\begin{definition}
+Группа \(G\) называется \emph{коммутативной} или \emph{абелевой}, если групповая операция коммутативна, то есть
+\begin{equation*}
+	a \circ b = b \circ a, \quad \forall a, b \in G.
+\end{equation*}
+\end{definition}
+
+\begin{definition}
+\emph{Порядок} группы \(G\) --- это количество элементов в \(G\). Группа называется конечной, если её порядок конечен, и бесконечной иначе. Обозначается \(|G|\).
+\end{definition}
+
+\begin{definition}
+Подмножество \(H\) группы \(G\) называется \emph{подгруппой}, если
+\begin{equation*}
+ 	|H| > 0, \quad a \circ b^{-1} \in H, \quad \forall a,b \in H.
+\end{equation*}
+\end{definition}
+
+\begin{proposal}
+Всякая подгруппа в \((\mathbb{Z}, +)\) имеет вид \(k\mathbb{Z}\) для некоторого \(k \in \mathbb{N}\)
+\end{proposal}
+
+\begin{definition}
+Пусть \(G\) --- группа и \(g \in G\). \emph{Циклической подгруппой}, порождённой элементом \(g\) называется подмножество
+\begin{equation*}
+	\{g^n \;|\; n \in \mathbb{Z}\} \in G.
+\end{equation*}
+Элемент \(g\) называется \emph{порождающим} или \emph{образующим} для этой группы \(\langle g \rangle\).
+\end{definition}
+
+\begin{definition}
+Пусть \(G\) --- группа и \(g \in G\). \emph{Порядком} элемента \(g\) называется такое наименьшее натуральное число \(m\), что \(g^m = e\). Если такого натурального числа не существует, то говорят, что порядок \(g\) равен бесконечности. Обозначение: \(\mathrm{ord}(g)\).
+\end{definition}
+
+\begin{proposal}
+Пусть \(G\) --- группа и \(g \in G\). Тогда \(\mathrm{ord}(g) = |\langle g \rangle|\).
+\end{proposal}
+
+\begin{definition}
+Группа \(G\) называется \emph{циклической}, если 
+\begin{equation*}
+	\exists \; g \in G, \quad G = \langle g \rangle.
+\end{equation*}
+\end{definition}
+
+\begin{definition}
+Пусть \(G\) --- группа, \(H \subseteq G\) --- подгруппа и \(g \in G\). \emph{Левым смежным классом} элемента \(g\) группы \(G\) по подгруппе \(H\) называется подмножество
+\begin{equation*}
+	gH = \{gh \;|\; h \in H\}.
+\end{equation*}
+\end{definition}
+
+\begin{definition}
+Пусть \(G\) --- группа, \(H \subseteq G\) --- подгруппа. \emph{Индексом} подгруппы \(H\) в группе \(G\) называется число левых смежных классов \(G\) по \(H\). Обозначается \([G \::\: H]\).
+\end{definition}
+
+\begin{theorem}[Лагранж]
+Пусть \(G\) --- конечная группа и \(H \subseteq G\) --- подгруппа. Тогда
+\begin{equation*}
+	|G| = |H| \cdot [G \::\: H].
+\end{equation*}
+\end{theorem}
+
+
+\section{Лекция 2}
+
+\begin{definition}
+Подгруппа \(H\) группы \(G\) называется \emph{нормальной}, если
+\begin{equation*}
+ 	gH = Hg, \quad \forall g \in G.
+\end{equation*} 
+\end{definition}
+
+\begin{proposal}
+Для подгруппы \(H \subseteq G\) следующие условия эквивалентны:
+\begin{enumerate}
+	\item \(H\) нормальна;
+	\item \(gHg^{-1} \subseteq H, \quad \forall g \in G\);
+	\item \(gHg^{-1} = H, \quad \forall g \in G\);
+\end{enumerate}
+\end{proposal}
+
+\begin{definition}
+Множество \(G / H\) с указанной операцией называется \emph{факторгруппой} группы \(G\) по нормальной подгруппе \(H\).
+\end{definition}
+
+\begin{definition}
+Пусть \(G\) и \(F\) --- группы. Отображение \(\varphi: G \rightarrow F\) называется \emph{гомоморфизмом}, если
+\begin{equation*}
+	\varphi(ab) = \varphi(a)\varphi(b), \quad \forall a, b \in G.
+\end{equation*}
+\end{definition}
+
+\begin{definition}
+Гомоморфизм групп \(\varphi: G~\rightarrow~F\) называется \emph{изоморфизмом}, если отображение \(\varphi\) биективно.
+\end{definition}
+
+\begin{definition}
+Группы \(G\) и \(F\) называют \emph{изоморфными}, если между ними есть изоморфизм. Обозначение: \(G \cong F\).
+\end{definition}
+
+\begin{theorem}
+Всякая бесконечная циклическая группа \(G\) изоморфна группе \((\mathbb{Z}, +)\).
+\end{theorem}
+
+\begin{theorem}
+Всякая циклическая группа порядка \(n\) изоморфна группе \((\mathbb{Z}_n, +)\).
+\end{theorem}
+
+\begin{definition}
+С каждым гомоморфизмом групп \(\varphi: G \rightarrow F\) связаны его \emph{ядро}
+\begin{equation*}
+	\ker(\varphi) = \{g \in G \;|\; \varphi(g) = e_F\}
+\end{equation*}
+и \emph{образ}
+\begin{equation*}
+	\im(\varphi) = \{a \in F \;|\; \exists g \in G: \varphi(g) = a\}.
+\end{equation*}
+\end{definition}
+
+\begin{proposal}
+Пусть \(\varphi: G \rightarrow F\) --- гомоморфизм групп. Тогда подгруппа \(\ker(\varphi)\) нормальна в \(G\).
+\end{proposal}
+
+\begin{theorem}[о гомоморфизме]
+Пусть \(\varphi: G \rightarrow F\) --- гомоморфизм групп. Тогда группа \(\im(\varphi)\) изоморфна факторгруппе \(G/\ker(\varphi)\).
+\end{theorem}
+
+\begin{definition}
+\emph{Центр} группы \(G\) --- это подмножество
+\begin{equation*}
+	Z(G) = \{a \in G \;|\; ab = ba, \quad \forall b \in G\}.
+\end{equation*}
+\end{definition}
+
+\begin{proposal}
+Центр \(Z(G)\) является нормальной подгруппой группы \(G\).
+\end{proposal}
+
+\begin{definition}
+\emph{Прямым произведением} групп \(G_1, \dots, G_m\) называется множество
+\begin{equation*}
+	G_1 \times \dots \times G_m = \{(g_1, \dots, g_m) \;|\; g_1 \in G_1, \dots, g_m \in G_m\}.
+\end{equation*}
+\end{definition}
+
+\begin{theorem}[о факторизации и сомножителях]
+Пусть \(H_1, \dots, H_m\) --- нормальные подгруппы в группах \(G_1, \dots, G_m\) соответственно. Тогда \(H_1 \times \cdot \times H_m\) --- нормальная подгруппа в \(G_1 \times \dots \times G_m\) и имеет место изоморфизм групп
+\begin{equation*}
+	(G_1 \times \dots \times G_m)/(H_1 \times \dots \times H_m) \cong G_1/H_1 \times \dots \times G_m/H_m
+\end{equation*}
+\end{theorem}
+
+\begin{theorem}
+Пусть \(n = ml\) --- разложение натурального числа \(n\) на два взаимно простых множителя. Тогда имеет место изоморфизм групп
+\begin{equation*}
+	\mathbb{Z}_n \cong \mathbb{Z}_m \times \mathbb{Z}_l.
+\end{equation*}
+\end{theorem}
+
+\end{document}
