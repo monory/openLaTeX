@@ -298,4 +298,61 @@
 \end{proposal}
 
 
+\section{Лекция 5}
+
+\begin{definition}
+\emph{Действием} группы \(G\) на множестве \(X\) называется отображение \(G \times X \rightarrow X, (g, x) \mapsto gx\), удовлетворяющее следующим условиям:
+\begin{enumerate}
+	\item \(ex = x, \quad \forall x \in X\) (\(e\) --- нейтральный элемент группы \(G\));
+	\item \(g(hx) = (gh)x, \quad \forall g,h \in G, x \in X\). 
+\end{enumerate}
+\end{definition}
+
+\begin{definition}
+\emph{Орбитой} точки \(x \in X\) называется подмножество
+\begin{equation*}
+	Gx = \{x' \in X \;|\; x' = gx \text{ для некоторого } g \in G\} = \{gx \;|\; g \in G\}
+\end{equation*}
+\end{definition}
+
+\begin{definition}
+\emph{Стабилизатором (стационарной подгруппой)} точки \(x \in X\) называется подгруппа St\((x) = \{g \in G \;|\; gx = x\}\).
+\end{definition}
+
+\begin{definition}
+Действие \(G\) на \(X\) называется \emph{транзитивным}, если для любых \(x, x' \in X\) найдётся такой элемент \(g \in G\), что \(x' = gx\). Иными словами, все точки множества \(X\) образуют одну орбиту.
+\end{definition}
+
+\begin{definition}
+Действие \(G\) на \(X\) называется \emph{свободным}, если для любой точки \(x \in X\) условие \(gx = x\) влечёт \(g = e\). Иными словами, St\((x) = \{e\}\) для всех \(x \in X\).
+\end{definition}
+
+\begin{definition}
+Действие \(G\) на \(X\) называется \emph{эффективным}, если условие \(gx = x\) для всех \(x \in X\) влечёт \(g = e\). Иными словами, \(\bigcup_{x \in X} \mathrm{St}(x) = \{e\}\).
+\end{definition}
+
+\begin{definition}
+\emph{Ядром неэффективности} действия группы \(G\) на множестве \(X\) называется подгруппа \(K = \{g \in G \;|\; gx = x, \forall x \in X\}\).
+\end{definition}
+
+\begin{definition}
+Два действия группы \(G\) на множествах \(X\) и \(Y\) называются изоморфными, если существует такая биекция \(\varphi: X \rightarrow Y\), что
+\begin{equation*}
+	\varphi(gx) = g\varphi(x), \quad \forall g \in G, x \in X.
+\end{equation*}
+\end{definition}
+
+\begin{proposal}
+Всякое свободное транзитивное действие группы \(G\) на множестве \(X\) изоморфно действию группы \(G\) на себе левыми сдвигами.
+\end{proposal}
+
+\begin{proposal}
+Действия группы \(G\) на себе правыми и левыми сдвигами изоморфны.
+\end{proposal}
+
+\begin{theorem}[Кэли]
+Всякая конечная группа \(G\) порядка \(n\) изоморфна подгруппе симметрической группы \(S_n\).
+\end{theorem}
+
+
 \end{document}
