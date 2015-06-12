@@ -355,4 +355,111 @@
 \end{theorem}
 
 
+\section{Лекция 6}
+
+\begin{definition}
+\emph{Кольцом} называется множество \(R\) с двумя бинарными операциями <<\(+\)>> (сложение) и <<\(\times\)>> (умножение), обладающими следующими свойствами:
+\begin{enumerate}
+	\item \((R, +)\) является абелевой группой (называемой \emph{аддитивной группой} кольца \(R\));
+	\item выполнены левая и правая дистрибутивности, то есть
+	\begin{equation*}
+		a(b + c) = ab + ac, \quad (b + c)a = ba + ca, \quad \forall a, b, c \in R;
+	\end{equation*}
+	\item \(a(bc) = (ab)c, \quad \forall a, b, c \in R\) (ассоциативность умножения);
+	\item \(\exists 1 \in R\) (называемый единицей), что
+	\begin{equation*}
+		a1 = 1a = a, \quad \forall a \in R.
+	\end{equation*}
+\end{enumerate}
+\end{definition}
+
+\begin{definition}
+Кольцо \(R\) называется \emph{коммутативным}, если \(ab = ba, \quad \forall a, b \in R\).
+\end{definition}
+
+\begin{definition}
+Элемент \(a \in R\) называется \emph{обратимым}, если \(\exists b \in R, ab = ba = 1\). 
+\end{definition}
+
+\begin{definition}
+Элемент \(a \in R\) называется \emph{левым} (соответственно \emph{правым}) \emph{делителем нуля}, если \(a \neq 0\) и \(\exists b \in R, b \neq 0, ab = 0\) (соответственно, \(ba = 0\)).
+\end{definition}
+
+\begin{definition}
+Элемент \(a \in R\) называется \emph{нильпотентом}, если \(a \neq 0\), и \(\exists m \in \mathbb{N}\), что \(a^m = 0\).
+\end{definition}
+
+\begin{definition}
+Элемент \(a \in R\) называется \emph{идемпотентом}, если \(a^2 = a\).
+\end{definition}
+
+\begin{definition}
+\emph{Полем} называется коммутативное кольцо ассоциативное кольцо \(K\) с единицей, в котором всякий ненулевой элемент обратим.
+\end{definition}
+
+\begin{proposal}
+Кольцо вычетов \(\mathbb{Z}_n\) является полем тогда и только тогда, когда \(n\) --- простое число.
+\end{proposal}
+
+\begin{definition}
+\emph{Алгеброй} над полем \(K\) (или, кратко, \emph{\(K\)-алгеброй}) называется множество \(A\) c операциями сложения, умножения и умножения на элементы поля \(K\), обладающими следующими свойствами:
+\begin{enumerate}
+	\item относительно сложения и умножения на элементы из \(K\) множество \(A\) есть векторное пространство;
+	\item относительно сложения и умножения \(A\) есть кольцо;
+	\item \((\lambda{}a)b = a(\lambda{}b) = \lambda(ab), \quad \forall \lambda \in K; a,b \in A\).
+\end{enumerate}
+
+\emph{Размерностью} алгебры \(A\) называется её размерность как векторного пространства над \(K\). Обозначение: \(\mathrm{dim}_K A\).
+\end{definition}
+
+\begin{definition}
+\emph{Подкольцом} кольца \(R\) называется всякое подмножество \(R' \subset R\), замкнутое относительно операций сложения и умножения (то есть \(a + b \in R', ab \in R', \quad \forall a, b \in R')\) и являющееся кольцом относительно этих операций. \emph{Подполем} называется всякое подкольцо, являющееся полем.
+\end{definition}
+
+\begin{definition}
+\emph{Подалгеброй} алгебры \(A\) (над полем \(K\)) называется всякое подмножество \(A' \subset A\), замкнутое относительно всех трёх имеющихся в \(A\) операций (сложения, умножения и умножения на элементы из \(K\)) и являющееся алгеброй (над \(K\)) относительно этих операций.
+\end{definition}
+
+\begin{definition}
+\emph{Изоморфизмом} колец, алгебр называется всякий гомоморфизм, являющийся биекцией.
+\end{definition}
+
+\begin{definition}
+Подмножество \(I\) кольца \(R\) называется \emph{(двусторонним) идеалом}, если оно является подгруппой по сложению и \(ra \in I, ar \in I, \forall a \in I, r \in R\).
+\end{definition}
+
+\begin{definition}
+Идеал \(I\) называется \emph{главным}, если существует такой элемент \(a \in R, I = (a)\). В таком случае говорят, что \(I\) порождён элементом \(a\). 
+\end{definition}
+
+\begin{definition}
+Кольцо \(R/I\) называется \emph{факторкольцом} кольца \(R\) по идеалу \(I\).
+\end{definition}
+
+\begin{theorem}[о гомоморфизме для колец]
+Пусть \(\varphi: R \rightarrow R'\) --- гомоморфизм колец. Тогда имеет место изоморфизм
+\begin{equation*}
+	R / \ker \varphi \cong \im \varphi
+\end{equation*}
+\end{theorem}
+
+\begin{definition}
+Кольцо \(R\) называется \emph{простым}, если в нём нет собственных (двусторонних) идеалов.
+\end{definition}
+
+\begin{definition}
+\emph{Центром} алгебры \(A\) над полем \(K\) называется её подмножество
+\begin{equation*}
+	Z(A) = \{a \in A \;|\; ab = ba, \quad \forall b \in A\}.
+\end{equation*}
+\end{definition}
+
+\begin{theorem}
+Пусть \(K\) --- поле, \(n\) --- натуральное число и \(A = \mathrm{Mat}(n \times n, K)\) --- алгебра квадратных матриц порядка \(n\) над полем \(K\).
+\begin{enumerate}
+	\item \(Z(A) = \{\lambda{}E \;|\; \lambda \in K\}\), где \(E\) --- единичная матрица (в частности, \(Z(A)\) --- одномерное подпространство в \(A\));
+	\item алгебра \(A\) проста (как кольцо).
+\end{enumerate}
+\end{theorem}
+
 \end{document}
