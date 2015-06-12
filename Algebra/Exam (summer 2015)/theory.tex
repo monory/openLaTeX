@@ -538,4 +538,51 @@
 \end{theorem}
 
 
+\section{Лекция 8}
+
+\begin{definition}
+Многочлен \(f(x_1, \dots, x_n) \in K[x_1, \dots, x_n]\), где \(K\) --- произвольное поле, называется \emph{симметрическим}, если \(f(x_{\tau(1)}, \dots, x_{\tau(n)}) = f(x_1, \dots, x_n)\) для всякой перестановки \(\tau \in S_n\).
+\end{definition}
+
+\begin{definition}
+\emph{Элементарными симметрическими многочленами} называются такие многочлены:
+\begin{align*}
+	\sigma_1(x_1, \dots, x_n) &= x_1 + x_2 + \dots + x_n; \\
+	\sigma_2(x_1, \dots, x_n) &= \sum_{1 \leqslant i < j \leqslant n} x_ix_j; \\
+	\dots &= \dots \\
+	\sigma_k(x_1, \dots, x_n) &= \sum_{1 \leqslant i_1 < i_2 < \dots < i_k \leqslant n} x_{i_1}x_{i_2}\dots{}x_{i_k}; \\
+	\dots &= \dots \\
+	\sigma_n(x_1, \dots, x_n) &= x_1x_2\dots{}x_n;
+\end{align*} 
+\end{definition}
+
+\begin{theorem}[Основная теорема о симметрических многочленах]
+Для всякого симметрического многочлена \(f(x_1, \dots, x_n)\) существует и единственен такой многочлен \(F(y_1, \dots, y_n)\), что
+\begin{equation*}
+	f(x_1, \dots, x_n) = F(\sigma_1(x_1, \dots, x_n), \dots, \sigma_n(x_1, \dots, x_n)).
+\end{equation*}
+\end{theorem}
+
+\begin{definition}
+\emph{Старшим членом} ненулевого многочлена \(f(x_1, \dots, x_n)\) называется наибольший в лексикографическом порядке встречающийся в нём одночлен. Обозначение: \(L(f)\).
+\end{definition}
+
+\begin{theorem}[о старшем члене]
+Пусть \(f(x_1, \dots, x_n), g(x_1, \dots, x_n) \in K[x_1, \dots, x_n]\) --- произвольные ненулевые многочлены. Тогда \(L(fg) = L(f)L(g)\).
+\end{theorem}
+
+\begin{theorem}[Виет]
+Пусть \(\alpha_1, \dots, \alpha_n\) --- корни многочлена \(x^n + a_{n-1}x^{n-1} + \dots + a_1x + a_0\). Тогда
+\begin{equation*}
+	\sigma_k(\alpha_1, \dots, \alpha_n) = (-1)^k a_{n-k}, \quad k = 1, \dots, n.
+\end{equation*}
+\end{theorem}
+
+\begin{definition}
+\emph{Дискриминантом} многочлена \(h(x) = a_nx^n + \dots + a_1x + a_0\) с корнями \(\alpha_1, \dots, \alpha_n\) называется выражение
+\begin{equation*}
+	D(h) = a_{n}^{2n-2} \prod_{1 \leqslant i < j \leqslant n} (\alpha_i - \alpha_j)^2
+\end{equation*}
+\end{definition}
+
 \end{document}
