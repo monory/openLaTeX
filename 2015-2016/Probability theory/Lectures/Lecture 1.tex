@@ -1,0 +1,141 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathtext}
+\usepackage{mathtools}
+\usepackage{microtype}
+\usepackage{cleveref}
+\usepackage{multicol}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\let\oldemptyset\emptyset % для красивого пустого множества
+\let\emptyset\varnothing
+
+\crefformat{footnote}{#2\footnotemark[#1]#3}
+
+\newtheorem*{lemma}{Лемма}
+\theoremstyle{remark}
+\newtheorem*{note}{Заметка}
+\newtheorem*{example}{Пример}
+\theoremstyle{definition}
+\newtheorem{definition}{Определение}
+\newtheorem{question}{Вопрос}
+% \numberwithin{question}{subsection}
+
+\everymath{\displaystyle}
+\begin{document}
+\sloppy
+\author{Чудинов Никита (группа 145)}
+\date{02.09.2015}
+\title{\vspace{-2.0cm}Лекция по теории вероятности №1.}
+\frenchspacing
+
+\maketitle
+
+\subsection*{Список полезных учебников в течение года}
+\begin{enumerate}
+	\item Ширяев А.Н. --- Вероятность
+	\item Севастьянов Б.А. --- Курс теории вероятностей и математической статистики
+	\item Чистяков В.П. --- Курс теории вероятностей
+	\item Кибзун А.И., Горяинова Е.Р., Наумов А.В. --- Теория вероятностей и математическая статистика; Базовый курс с примерами и задачами
+\end{enumerate}
+
+\begin{definition}
+\(\omega_1, \dots, \omega_n\) --- все взаимоисключающие исходы называются \emph{элементарными исходами}.
+\end{definition}
+
+\begin{definition}
+\(\Omega = \{\omega_1, \dots, \omega_n\}\) --- \emph{пространство} элементарных случайных событий. 
+\end{definition} 
+
+\begin{example}
+\(\) % хак для красоты
+\begin{enumerate}
+	\item \(\Omega = \{\omega_1, \omega_2\}\) --- монета;
+	\item \(\Omega = \{\omega_1, \dots, \omega_6\}\) --- игральная кость;
+	\item \(\Omega = \{\omega_1, \dots\}\) --- количество принятых звонков телефонной станцией.
+\end{enumerate}
+\end{example}
+
+\begin{definition}
+\emph{Достоверное событие} --- событие, происходящее с вероятностью \(1\). 
+\end{definition}
+
+\begin{definition}
+\emph{Невозможное событие} --- событие, происходящее с вероятностью \(0\). 
+\end{definition}
+
+\begin{definition}[Операции над случайными событиями в сравнении с множествами]
+\(\)
+\begin{enumerate}
+	\item \emph{Суммой} случайных событий называют их объединение;
+	\item \emph{Произведением} случайных событий называют их пересечение;
+	\item \emph{Противоположными} случайными событиями называют дополнение событий;
+	\item \emph{Разность} аналогична операции над множествами.
+\end{enumerate}
+\end{definition}
+
+\begin{definition}[Свойства операций над случайными событиями]
+\(\)
+\begin{multicols}{2}
+\begin{enumerate}
+	\item \(A \cdot \Omega = A\);
+	\item \(A + \Omega = \Omega\);
+	\item \(A + A = A\);
+	\item \(A \cdot A = A\);
+	\item \(\emptyset \cdot \Omega = \emptyset\);
+	\item \(\emptyset + \Omega = \Omega\);
+	\item \(A + B = B + A\);
+	\item \(A \cdot B = B \cdot A\);
+	\item \(A + (B + C) = (A + B) + C\); 
+	\item \(A \cdot (B \cdot C) = (A \cdot B) \cdot C\);
+	\item \(\overline{A + B} = \overline{A} \cdot \overline{B}\);
+	\item \(\overline{\overline{A}} = A\).
+\end{enumerate}
+\end{multicols}
+\end{definition}
+
+\begin{definition}
+Класс \(\mathcal{A}\) подмножеств пространства \(\Omega\) называется \emph{алгеброй событий}, если:
+\begin{enumerate}
+	\item \(\Omega \in \mathcal{A}\);
+	\item \(A \in \mathcal{A} \Rightarrow \overline{A} \in \mathcal{A}\);
+	\item \(A, B \in \mathcal{A} \Rightarrow A + B \in \mathcal{A}, A \cdot B \in \mathcal{A}\).
+\end{enumerate}
+\end{definition}
+
+\begin{example}
+\(\)
+\begin{enumerate}
+	\item \(\emptyset, \Omega\);
+	\item Все комбинации элементарных событий.
+\end{enumerate}
+\end{example}
+
+\begin{definition}
+Алгебра событий \(\mathcal{A}\) называется \emph{\(\sigma\)-алгеброй}, если:
+\begin{equation*}
+	\forall A_1, \dots, A_n, \dots \in \mathcal{A} \Rightarrow \sum_{i = 1}^{\infty} A_i \in \mathcal{A} \textup{ и } \prod_{i = 1}^{\infty} A_i \in \mathcal{A}.
+\end{equation*}
+\end{definition}
+
+\begin{note}
+Пусть \(\Omega\) удовлетворяет следующим условиям:
+\begin{enumerate}
+	\item Существует конечное число элементарных случайных событий;
+	\item Все элементарные случайные события равновероятны
+\end{enumerate}
+\end{note}
+
+\begin{definition}
+Пусть \(A \leqslant \Omega\); Тогда \(|A|\) --- количество событий, удовлетворяющих \(A\).
+\end{definition}
+
+\begin{definition}
+\emph{Вероятность} \(P(A) = \frac{|A|}{|\Omega|}\).
+\end{definition}
+
+\end{document}
