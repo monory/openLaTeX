@@ -1,0 +1,108 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathtext}
+\usepackage{mathtools}
+\usepackage{microtype}
+\usepackage{multicol}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\let\oldemptyset\emptyset % для красивого пустого множества
+\let\emptyset\varnothing
+
+
+\newtheorem*{lemma}{Лемма}
+\theoremstyle{remark}
+\newtheorem*{note}{Заметка}
+\newtheorem*{example}{Пример}
+\theoremstyle{definition}
+\newtheorem{definition}{Определение}
+\newtheorem{question}{Вопрос}
+% \numberwithin{question}{subsection}
+
+\everymath{\displaystyle}
+\begin{document}
+\sloppy
+\author{Чудинов Никита (группа 145)}
+\date{7 сентября 2015}
+\title{\vspace{-2.0cm}Лекция по теории вероятности №2.}
+\frenchspacing
+
+\maketitle
+
+\begin{note}
+	Список свойств \(P(A)\):
+	\begin{enumerate}
+		\item \(\forall A \in \Omega P(A) \geqslant 0\);
+	    \item \(P(\Omega) = 1\);
+	    \item Если \(A \cdot B = \emptyset\), то \(P(A + B) = P(A) + P(B)\).
+	\end{enumerate}
+\end{note}
+
+\begin{definition}
+	Eсли \(A \cdot B = \emptyset\), то события \(A\) и \(B\) \emph{несовместны}.
+\end{definition}
+
+
+\begin{definition}[Геометрическое определение вероятности]
+	Пусть мы имеем \(n\)-мерное пространство конечной меры \(\Omega\). Тогда область \(A\) в ней будет показывать событие, а площадь его по отнод шению к площади пространства будет вероятностью:
+	\begin{equation*}
+		P(A) = \frac{\mu(A)}{\mu(\Omega)}.
+	\end{equation*}
+\end{definition}
+
+\begin{definition}[Частота]
+	Пусть опыт повторён \(n\) раз, из которых событие \(A\) произошло \(m_A\) раз. Тогда величина \(\frac{m_A}{N}\) называется \emph{частотой} события.
+\end{definition}
+
+
+\begin{definition}[Частотное определение (определение фон Мизеса)]
+	Пусть \(m_A\) --- частота события \(A\). Тогда
+	\begin{equation*}
+		\lim_{N \rightarrow \infty} \frac{m_A}{N} \rightarrow P(A),
+	\end{equation*}
+	является вероятностью события \(A\).
+\end{definition}
+
+
+\begin{definition}[Аксиоматическое определение Колмогорова]
+	Пусть \(\mathcal{F}\) --- \(\sigma\)-алгебра событий на пространстве \(\Omega\). Тогда числовая функция \(P: \mathcal{F} \rightarrow \mathbb{R}^1\), удовлетворяющая условиям
+	\begin{enumerate}
+		\item \(\forall A \in \mathcal{F}, P(A) \geqslant 0\);
+		\item \(P(\Omega) = 1\);
+		\item Если \(A_1, \dots, A_n, \ldots \in \mathcal{F}\) попарно несовместны, то \(P \left(\sum^{\infty}_{i=1} A_i \right) = \sum^{\infty}_{i=1} P(A_i)\);
+	\end{enumerate}
+	называется вероятностью.
+\end{definition}
+
+\begin{definition}
+	Тройка \(\{\Omega, \mathcal{F}, P\}\) называется вероятностным пространством.
+\end{definition}
+
+\begin{note}
+Свойства \(P(A)\):
+\begin{enumerate}
+	\item \(P(A) = 1 - P(\overline{A})\);
+	\item \(P(\emptyset) = 0\);
+	\item \(A \subseteq B \Rightarrow P(A) \leqslant P(B)\);
+	\item \(\forall A \subseteq \Omega: 0 \leqslant P(A) \leqslant 1\);
+	\item \(P(A+B) = P(A) + P(B) - P(AB)\);
+\end{enumerate}
+\end{note}
+
+\begin{definition}
+	Пусть \(P(B) > 0\). Тогда \(P(A)\), вычисленная в предположении того, что событие \(B\) уже произошло, называется \emph{условной вероятностью} события \(A\) при условии \(B\):
+	\begin{equation*}
+		P(A / B) = \frac{P(A \cdot B)}{P(B)} = \frac{|A \cdot B|}{|B|}.
+	\end{equation*}
+\end{definition}
+
+\begin{definition}
+	События \(A\) и \(B\) называются \emph{независимыми}, если \(P(A/B) = P(A)\). 
+\end{definition}
+
+
+\end{document}
