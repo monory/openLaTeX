@@ -1,0 +1,189 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathtext}
+\usepackage{mathtools}
+\usepackage{microtype}
+\usepackage{cleveref}
+\usepackage{multicol}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\let\oldemptyset\emptyset % для красивого пустого множества
+\let\emptyset\varnothing
+
+\crefformat{footnote}{#2\footnotemark[#1]#3}
+
+\newtheorem*{theorem}{Теорема}
+\theoremstyle{remark}
+\newtheorem*{note}{Заметка}
+\newtheorem*{example}{Пример}
+\theoremstyle{definition}
+\newtheorem{definition}{Определение}
+\newtheorem*{effect}{Следствие}
+\newtheorem{question}{Вопрос}
+% \numberwithin{question}{subsection}
+
+\everymath{\displaystyle}
+\begin{document}
+\sloppy
+\author{Чудинов Никита (группа 145)}
+\date{02 сентября 2015}
+\title{\vspace{-2.0cm}Лекция по математическому анализу №1.}
+\frenchspacing
+ 
+\maketitle
+
+
+\begin{definition}
+\emph{Числовой ряд} --- формула вида
+\begin{equation*}
+	a_1 + a_2 + \dots = \sum^{\infty}_{n = 1} a_n;\; a_i \in \mathbb{R} \text{ или } \mathbb{C}).
+\end{equation*}
+\end{definition}
+
+\begin{definition}
+\(n\)-той \emph{частичной суммой ряда} называется конечная сумма вида:
+\begin{equation*}
+	S_n = \sum^{n}_{i = 1} a_i.
+\end{equation*}
+\end{definition}
+
+\begin{definition}
+Числовой предел \emph{сходится}, если его частичные суммы имеют предел. Такой предел называется \emph{суммой} ряда.
+\end{definition}
+
+\begin{example}
+\begin{gather*}
+	\sum^{\infty}_{n = 0} q^n;\; S_n = \sum^{n}_{k = 0} q^k = 1 + q + \dots + q^k = \frac{1 - q^{n+1}}{1-q}; \\
+	\lim_{n \rightarrow \infty} S_n = 
+	\begin{cases}
+		\frac{1}{1 - q}; &|q| < 1; \\
+		\infty; &|q| \geqslant 1; \\
+		\nexists; &q = -1. 
+	\end{cases}
+\end{gather*}
+\end{example}
+
+\begin{example}
+\begin{gather*}
+	\sum^{\infty}_{k = 1} \frac{1}{k^2 + k} ;\; S_n = \sum^{n}_{k = 1} \frac{1}{k^2 + k}; \\
+	\frac{1}{k^2 + k} = \frac{1}{k (k + 1)} = \frac{1}{k} - \frac{1}{k - 1}; \\
+	\sum^{n}_{k = 1} \left(\frac{1}{k} - \frac{1}{k + 1}\right) = \left(1 - \frac{1}{2}\right) + \left(\frac{1}{2} - \frac{1}{3}\right) + \dots + \left(\frac{1}{k} - \frac{1}{k + 1}\right) = 1 - \frac{1}{k + 1}; \\
+	\lim_{n \rightarrow \infty} S_n = \lim_{n \rightarrow \infty} 1 - \frac{1}{k + 1} = 1.
+\end{gather*}
+\end{example}
+
+\begin{note}
+    В дальнейшем, для простоты, \(\sum_{n=1}^{\infty}\) может быть иногда записан как \(\sum_{1}^{\infty}\), или, реже, просто \(\sum\).
+\end{note}
+
+
+\begin{definition}[Необходимый признак сходимости]
+    Если ряд \(\sum^{\infty}_{1} a_n\) сходится, то \(\lim_{a \rightarrow \infty} a_n = 0\).
+\end{definition}
+
+\begin{proof}
+    \begin{gather*}
+        a_n = S_n - S_{n - 1}; \\
+        \text{Т.к. } \exists \lim_{n \rightarrow \infty} S_n = S, \text{ то } \lim_{n \rightarrow \infty} a_n = S - S_n = 0.
+    \end{gather*}
+\end{proof}
+
+\begin{effect}
+    Если \(a_n \nrightarrow 0\), то ряд расходится. 
+\end{effect}
+
+\begin{note}
+    \emph{Обратное неверно!} \(a_n \rightarrow 0 \nRightarrow\) сходимость ряда!
+\end{note}
+
+\begin{example}
+    \begin{equation*}
+        \sum^{\infty}_{1} \left(\frac{n}{n+2}\right)^{n} \!;\; a_n = \left(\frac{n}{n+2}\right)^{n} \rightarrow \left[1^\infty\right] = \frac{1}{\left(1 + \frac{2}{n}\right)^n} \rightarrow \frac{1}{e^2} \neq 0.
+    \end{equation*}
+\end{example}
+
+\begin{example}
+    \begin{gather*}
+        \sum^{\infty}_{1} \frac{1}{\sqrt{n}};\; a_n = \frac{1}{\sqrt{n}} \rightarrow 0 \text{ при } n \rightarrow \infty; \\
+        S_n = \sum^n_{k=1} \frac{1}{\sqrt{k}} \geqslant \frac{n}{\sqrt{n}} = \sqrt{n} \rightarrow \infty.
+    \end{gather*}
+    Ряд не сходится.
+\end{example}
+
+\begin{definition}[Критерий Коши]
+    Ряд \(\sum_1^\infty a_n\) сходится \(\Leftrightarrow \forall \varepsilon > 0\; \exists N(\varepsilon): \forall n > N(\varepsilon) \text{ и } \forall p \in \mathbb{N}: |S_{n + p} - S_n| < \varepsilon\).
+\end{definition}
+
+\begin{effect}
+    Ряд \(\sum^\infty_1\) расходится \(\Leftrightarrow \exists \varepsilon > 0\; \forall N\; \exists n > N, p: |S_{n + p} - S_n| > \varepsilon\).
+\end{effect}
+
+\begin{example}
+    \(\sum^\infty_1 \frac{1}{n}\) (гармонический ряд):
+    \begin{equation*}
+        p = n = N;\; |S_{n+p} - S_n| = |S_{2N} - S_N| = \frac{1}{N+1} + \dots + \frac{1}{2N} \geqslant \frac{1}{2N} \cdot N = \frac{1}{2} = \varepsilon.
+    \end{equation*}
+\end{example}
+
+\begin{note}[Свойства сходящихся рядов]
+    \begin{enumerate}
+        \item Если ряды \(\sum_{1}^{\infty} a_n = A, \sum_{1}^{\infty} b_n = B\) сходятся, то \(\sum_{1}^{\infty} \alpha a_n + \beta b_n = \alpha A + \beta B\);
+        \item Если ряд сходится, то сходится и ряд, полученный выбрасыванием любого конечного числа слагаемых;
+        \item Если ряд сходится, то сходится и ряд, полученный из исходного произвольной группировкой членов.
+    \end{enumerate}
+\end{note}
+
+\begin{note}
+    \emph{Обратное неверно!} \(\sum_{1}^{\infty} (-1)^n\) не сходится, но \((-1 + 1) + (-1 + 1) + \dots\) сходится!
+\end{note}
+
+\begin{theorem}
+    Ряд \(\sum_{1}^{\infty};\;a_n \geqslant 0\) сходится \(\Leftrightarrow S_n = \sum_{1}^{n}\) ограничена.
+\end{theorem}
+
+\begin{proof}
+    \emph{Необходимое условие:} \(\sum_{1}^{\infty}\) сходится \(\Rightarrow \exists \lim_{n \rightarrow \infty} S_n = S \Rightarrow \{S_n\}\) --- ограничена (из теории пределов);
+    
+    \emph{Достаточное условие:} \(S_n \leqslant\; M\; \forall n\). \(S_n\) --- монотонная ограниченная последовательность \(\Rightarrow \exists \lim_{n \rightarrow \infty} S_n = S\).
+\end{proof}
+
+
+\begin{definition}[Интегральный признак сходимости]
+    Пусть \(S(x)\) монотонна на \([1;+\infty)\). Тогда \(\sum_{k = 1}^{\infty} f(k)\) сходится и расходится одновременно с \(\int_{1}^{\infty} \! f(x) \mathrm{d}x\).
+\end{definition}
+
+\begin{example}
+    \begin{gather*}
+        \sum_{n=1}^{\infty} \frac{1}{n^\alpha};\; f(x) = \frac{1}{x^\alpha};\; [1;+\infty) f(x) \geqslant 0; \\
+        \int_{1}^{\infty} \frac{\mathrm{d}x}{x^\alpha} = \lim_{n \rightarrow \infty} \int_{1}^{n} \frac{\mathrm{d}x}{x^\alpha} = \left. \lim_{n \rightarrow \infty} \frac{1}{1 - \alpha} \cdot \frac{1}{x^{\alpha - 1}} \right |_1^n = \frac{1}{1 - \alpha} \lim_{n \rightarrow \infty} \left(n^{\frac{1}{\alpha - 1} - 1}\right); \\
+        \begin{dcases}
+            \infty & \quad \text{if } \alpha \leqslant 1 \\
+            \frac{1}{\alpha - 1} & \quad \text{if } \alpha > 1;
+        \end{dcases}
+    \end{gather*}    
+\end{example}
+
+
+\begin{definition}[Признак сравнения]
+    Если \(\sum_{1}^{\infty} a_n, a_n > 0;\; \sum_{1}^{\infty} b_n, b_n > 0 \forall n\) и \(a_n \leqslant b_n \forall n\), то
+    \begin{itemize}
+        \item из сходимости \(\sum_{1}^{\infty} b_n \Rightarrow \sum a_n\) тоже сходится;
+        \item из расходимости \(\sum a_n \Rightarrow \sum b_n\) тоже расходится.
+    \end{itemize}
+\end{definition}
+
+\begin{effect}[Признак сравнения в предельной форме]
+    \begin{gather*}
+        \sum a_n, a_n > 0 \forall n \\
+        \sum b_n, b_n > 0 \forall n
+    \end{gather*}
+    Если \(a_n \sim b_n\) при \(n \rightarrow \infty\) (т.е. \(\frac{a_n}{b_n} = 1\)), то \(\sum a_n, \sum b_n\) сходятся или расходятся одновременно.
+\end{effect}
+
+
+
+\end{document}
