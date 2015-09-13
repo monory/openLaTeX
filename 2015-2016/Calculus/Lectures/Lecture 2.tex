@@ -1,0 +1,150 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathtext}
+\usepackage{mathtools}
+\usepackage{microtype}
+\usepackage{cleveref}
+\usepackage{multicol}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\let\oldemptyset\emptyset % для красивого пустого множества
+\let\emptyset\varnothing
+
+\crefformat{footnote}{#2\footnotemark[#1]#3}
+
+\newtheorem*{theorem}{Теорема}
+\theoremstyle{remark}
+\newtheorem*{note}{Заметка}
+\newtheorem*{example}{Пример}
+\theoremstyle{definition}
+\newtheorem{definition}{Определение}
+\newtheorem*{effect}{Следствие}
+\newtheorem{question}{Вопрос}
+% \numberwithin{question}{subsection}
+
+\everymath{\displaystyle}
+\begin{document}
+\sloppy
+\author{Чудинов Никита (группа 145)}
+\date{7 сентября 2015}
+\title{\vspace{-2.0cm}Лекция по математическому анализу №2.}
+\frenchspacing
+ 
+\maketitle
+
+
+\begin{definition}[Признак д'Аламбера]
+	Если для ряда \(\sum_{1}^{\infty}\) существует такое число \(q, {0 < q < 1}\), что, начиная с некоторого момента \(\left| \frac{a_{n+1}}{a_n}\right| \leqslant q \), то данный ряд абсолютно сходится. Если же, начиная с некоторого номера\(\left| \frac{a_{n+1}}{a_n}\right| > 1\), то ряд расходится.
+\end{definition}
+
+\begin{effect}
+	Пусть \(\sum_{1}^{\infty} a_n;\; a_n > 0 \;\forall n\).
+	Если \(\exists \lim_{n \rightarrow \infty} \frac{a_{n+1}}{a_n} = \lambda\), то:
+	\begin{enumerate}
+		\item при \(\lambda < 1\) ряд сходится;
+		\item при \(\lambda > 1\) ряд расходится;
+		\item при \(\lambda = 1\) ряд может как сходиться, так и расходиться.
+	\end{enumerate}
+\end{effect}
+
+\begin{example}
+	\begin{gather*}
+		\sum_1^\infty \frac{2^n}{n!};\; a_n = {2^n}{n!};\; a_{n+1} = \frac{2^{n+1}}{(n + 1)!} = \frac{2 \cdot 2^n}{(n + 1)n!}; \\
+		\lim_{n \rightarrow \infty} \frac{a_{n+1}}{a_n} = \frac{2}{\infty} = 0.
+	\end{gather*}
+	Ряд сходится.
+\end{example}
+
+\begin{example}
+	\begin{gather*}
+		\sum_1^\infty \frac{1}{n};\; \lim_{n \rightarrow \infty} \frac{a_{n+1}}{a_n} \rightarrow 1 = \lambda.
+	\end{gather*}
+	Ряд, по этому признаку, может как сходиться, так и расходиться.
+\end{example}
+
+\begin{definition}[Признак Коши]
+	Пусть для ряда \(\sum_1^{\infty} a_n;\; a_n \geqslant 0 \;\forall n \;\exists \lim_{n \rightarrow \infty} \sqrt[n]{a_n} = \lambda\).
+	Тогда:
+	\begin{enumerate}
+		\item при \(\lambda < 1\) ряд сходится;
+		\item при \(\lambda > 1\) ряд расходится;
+		\item при \(\lambda = 1\) ряд может как сходиться, так и расходиться.
+	\end{enumerate}
+\end{definition}
+
+\begin{example}
+	\begin{gather*}
+		\sum_1^\infty \left(\frac{n}{n+2}\right)^{n^2}; \\
+		\lambda = \lim_{n \rightarrow \infty} \sqrt[n]{a_n} = \lim_{n \rightarrow \infty} \left(\frac{n}{n+2}\right)^n = \frac{1}{\lim\limits_{n \rightarrow \infty} \left(1 + \frac{2}{n}\right)^n} = \frac{1}{e^2} < 1.
+	\end{gather*}
+\end{example}
+
+\begin{theorem}
+	Если \(\exists\; \lim_{n \rightarrow \infty} \frac{a_{n+1}}{a_n} = \lambda\), то \(\exists\; \lim_{n \rightarrow \infty} \sqrt[n]{a_n} = \lambda\).
+\end{theorem}
+
+\begin{definition}[Признак Гаусса]
+	Пусть дан ряд \(\sum_1^\infty a_n;\; a_n > 0 \;\forall n\). Если можно выразить
+	\begin{equation*}
+		\frac{a_n}{a_{n+1}} = \alpha + \frac{\beta}{n} + \dots + \frac{\gamma_n}{n^\lambda};\; \lambda > 1;\; |\gamma_n| < M \;\forall n;
+	\end{equation*}
+	Тогда:
+	\begin{enumerate}
+		\item При \(\alpha > 1\) ряд сходится;
+		\item При \(\alpha < 1\) ряд расходится;
+		\item При \(\alpha = 1\):
+		\begin{enumerate}
+			\item При \(\beta > 1\) ряд сходится;
+			\item При \(\beta \leqslant 1\) ряд расходится.
+		\end{enumerate}
+	\end{enumerate}
+\end{definition}
+
+\begin{example}
+	\begin{gather*}
+		\sum_1^\infty \frac{1}{n};\; \frac{a_n}{a_{n+1}} = 1 + \frac{1}{n} \Rightarrow \text{ 3(б) } \Rightarrow \text{ряд расходится.}
+	\end{gather*}
+\end{example}
+
+
+\begin{definition}[Знакочередующиеся ряды]
+	\emph{Знакочередующимися} называются ряды вида:
+	\begin{equation*}
+		\sum_1^\infty (-1)^{n+1} a_n;\; a_n > 0 \;\forall n.
+	\end{equation*}
+\end{definition}
+
+
+\begin{theorem}[Лейбниц]
+	Если у знакочередующегося ряда \(\sum_1^\infty (-1)^{n+1} a_n;\; a_n > 0 \;\forall n;\; a_n\) монотонно стремится к \(0\; (a_n \searrow 0)\), то ряд сходится. 
+\end{theorem}
+
+\begin{effect}
+	Если \(S = \sum_1^\infty (-1)^{n+1} a_n;\; a_n > 0 \;\forall n\), то \(S_{2n} \leqslant S \leqslant S_{2n + 1} \;\forall n\).
+\end{effect}
+
+
+\begin{definition}[Признак Дирихле]
+	Рассмотрим ряд вида \(\sum_1^\infty a_{n}b_{n}\). Если:
+	\begin{enumerate}
+		\item \(\left| \sum_{k=1}^{n} b_k \right| \leqslant M \;\forall k,n\) --- частная сумма ограничена;
+		\item \(a_n\) монотонно стремится к \(0\);
+	\end{enumerate}
+	то ряд сходится.
+\end{definition}
+
+\begin{effect}[Признак Абеля]
+	Рассмотрим ряд вида \(\sum_1^\infty a_{n}b_{n}\). Если:
+	\begin{enumerate}
+		\item \(\sum_1^\infty b_n\) сходится;
+		\item \(a_n\) --- монотонная ограниченная последовательность;
+	\end{enumerate}
+	то ряд сходится.
+\end{effect}
+
+
+\end{document}
