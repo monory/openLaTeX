@@ -1,0 +1,224 @@
+\documentclass[a4paper, 12pt]{article}
+\usepackage[english,russian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\usepackage{relsize}
+\usepackage{graphicx}
+\usepackage{microtype}
+
+
+
+\newtheorem{Definition}{Определение}
+\newtheorem{Lemma}{Лемма}
+\newtheorem{Examples}{Примеры}
+\newtheorem{Consequence}{Следствие}
+
+\title{\vspace{-2.0cm}Математический анализ 3.\\Лекция 4.}
+\author{Лепский Александр Евгеньевич\footnote{лекция записана Жуковым Иваном (группа 145)}}
+\begin{document}
+    \maketitle
+    
+    \begin{Definition}
+        Говорят, что посл-ть $\scalebox{1.2}{$\{f_n(x)\}^{\infty}_{n = 1}$}$ равномерно сходится
+        на множестве D к функции $f(x)$, если\\
+        \[\ \forall \varepsilon > 0
+        \ \exists \  N(\varepsilon): \left| f_n(x) - f(x) \right|
+        < \varepsilon \ \forall n > N(\varepsilon) \ \forall x \in D\]         
+        \[f_n \xRightarrow{D} f\]
+    \end{Definition}
+    \begin{Lemma}
+        Если $\exists \ a_n \xrightarrow{D} 0$ :
+        \[ \left| f_m(x) - f(x)\right| \le a_n \ \forall x \in D \ \forall n
+        \ge m\], то $f_m \Rightarrow f$
+    \end{Lemma}
+    \begin{Examples}
+        \leavevmode
+        \begin{enumerate}
+            \item
+            $f_n(x) = \dfrac{n + 1}{n^2 + x^2}, x \in [-1, 1]$;
+            $f_n \xrightarrow{D} 0 = f(x)$\\
+            $\left| f_n(x) - f(x)\right| = \dfrac{n + 1}{n^2 + x^2} \le
+            \dfrac{n + 1}{n^2}$
+
+            \item
+            $f_n(x) = x^n, x \in (0; 1) = D$ \\
+            $f_n \xrightarrow{D} 0$ \\
+            $sup \left| f_n(x) - f(x) \right| = sup(x^n) = 1 \not \rightarrow 0$
+            при $n \rightarrow \infty$
+
+        \end{enumerate}
+    \end{Examples}
+
+    \center{Критерий равномерной сходимости \par}
+    \begin{enumerate}
+        \item 
+        $f_n \xRightarrow{D} f \ \Leftrightarrow \underset{x \in D}{\sup}
+        \left| f_n(x) - f(x)\right| \rightarrow 0$  при $n \rightarrow \infty$
+
+        \item
+        Критерий Коши:
+        $f_n \xRightarrow{D} f \ \Leftrightarrow \ \forall \varepsilon > 0
+        \ \exists \ N(\varepsilon) \ \forall n \ge N(\varepsilon)$ и\\
+        $\ \forall p: \left| f_{n + p}(x) - f_n(x) \right| <
+        \varepsilon \ \forall x \in D$ 
+    \end{enumerate}
+
+    \begin{proof}
+        1) Необходимость.\\
+        Пусть $f_n \xRightarrow{D} f \Leftrightarrow$
+        \[\ \forall \varepsilon > 0 \ \exists N(\varepsilon):
+        \left| f_n(x) - f(x)\right| < \varepsilon \ \forall x \in D\]
+
+        \[\left| f_{n + p}(x) - f_n(x)\right| \le
+        \left| f_{n + p}(x) - f(x)\right| + \left| f(x) - f_n(x)\right|
+        < \dfrac{\varepsilon}{2} + \dfrac{\varepsilon}{2} = \varepsilon
+        \ \forall x \in D \ \forall n > N(\varepsilon)\]
+
+        $f_n \ \xRightarrow{D} f \ \Leftrightarrow \ \forall \varepsilon > 0
+        \ \exists N(\varepsilon) \ \forall n \ge N(\varepsilon)$ и $\ \forall
+        p: \left| f_{n + p}(x) - f_n(x) \right| < \varepsilon \ \forall x
+        \in D (1)$
+
+        2) Достаточность: пусть верно (1) \\
+        $\ \forall$ фиксированного $x \in D$ из (1) $\Rightarrow$ $\{f_n(x)\}$
+        - фундаментальная посл-ть вещ. чисел $\Rightarrow \ \exists
+        \displaystyle \lim^{}_{n \rightarrow \infty} f_n(x) = f(x)$ \\
+        Покажем, что $f_n \xRightarrow{D} f$ \\
+        Из (1) при $p \rightarrow \infty:$ \\
+        $\left| f(x) - f_n(x) \right| < \varepsilon \ \forall x \in D
+        \Rightarrow f_n \xRightarrow{D} f$
+    \end{proof}
+    \begin{Consequence}
+        $f_n \not \xRightarrow{D} f \ \Leftrightarrow$\\
+        $\ \exists \ \varepsilon_0
+        > 0 \ \forall N(\varepsilon) \ \exists \  n \ge N(\varepsilon)$
+        $\ \exists \  p \ \exists \  x_0 \in D:
+        \left| f_{n + p}(x_0) - f_n(x_0)\right| \ge \varepsilon_0$
+    \end{Consequence}
+
+    \vspace{1cm}
+    $\displaystyle \sum ^{\infty}_{1} u_n(x), u_n(x)$ - функции на D. (2)
+
+    \begin{Definition}
+        Ряд (2) сх-ся на D \textbf{поточечно}, если \\
+         $\ \exists \  S(x)$ на D: $S_n \xrightarrow{D} S \Leftrightarrow
+         \ \forall x \in D \ \forall \varepsilon > 0 \ \exists
+         \ N(\varepsilon, x): \left| S_n(x) - S(x) \right| < \varepsilon
+         \ \forall n > N(\varepsilon, x)$
+    \end{Definition}
+    \begin{Definition}
+        Ряд (2) сх-ся на D \textbf{равномерно}, если он сх-ся к $S(x),
+        \ x \in D$ и\\
+        \[\ \forall \varepsilon > 0 \ \exists \  N(\varepsilon):
+        \left| S_n(x) - S(x)\right| < \varepsilon \ \forall x \in D \]
+        \[\Leftrightarrow\]
+        \[\underset{x \in D}{\sup} \left|r_n(x) \right| \rightarrow 0\]
+        при $n \rightarrow 0$ \\ 
+        $S_n(x) - S(x) = r_n(x) = \displaystyle
+        \sum^{\infty}_{k = n + 1} u_k(x)$  - остаток ряда
+    \end{Definition}
+    \begin{Examples}
+        \leavevmode
+        \begin{enumerate}
+            \item
+            $\displaystyle \sum ^{\infty}_{n = 0}x^n, D = [0; \alpha],
+            \alpha \in (0; 1)$ \\
+            $S_n(x) = \displaystyle \sum ^{n}_{k = 0} x^k =
+            \dfrac{1 - x^{n + 1}}{1 - x} \xrightarrow{D} \dfrac{1}{1 - x} = S(x)$
+            \[ \left| \underset{0 < x < 1}{sup} |r_n(x)| =  sup \left|
+            \displaystyle \sum^{\infty}_{k = n + 1} x^k \right| \right| =
+            sup \dfrac{x^{ n + 1}}{1 - x} = \infty \Rightarrow\]
+            не является равном. сх-ся на D
+        \end{enumerate}
+    \end{Examples}
+
+    \vspace{1cm}
+    Критерий равномерной сходимости функции ряда
+
+    \begin{flushleft}
+    \textbf{Критерий Коши}: ряд (2) равн. сх-ся на D $\Rightarrow$\\
+        
+    \end{flushleft}
+    $\ \forall \varepsilon > 0 \ \exists \  N(\varepsilon):
+    \ \forall n > N(\varepsilon) \ \forall p:
+    \left| S_{n + p}(x) - S_n(x) \right| < \varepsilon \ \forall x \in D$
+
+    \begin{Consequence}
+        Ряд (2) не явл. сход. на D $\Leftrightarrow$ \\
+        \[\ \exists \  \varepsilon_0 \ \forall \ N: \ \exists \  n \ge N,
+        p, x_0 \in D:
+        \left| S_{n + p}(x_0) - S_n(x_0)\right| \ge \varepsilon_0\]
+    \end{Consequence}
+
+    % \vspace{1cm}
+    \newpage
+    Признаки равномерной сходимости функций рядов
+    \begin{enumerate}
+        \item 
+        \textbf{Необходимый признак}
+        
+        Если ряд $\displaystyle \sum^{\infty}_{1} u_n(x)$ равномерно сх-ся на D,
+        то $u_n(x) \xRightarrow{D} 0$ при $n \rightarrow \infty$
+
+        \begin{proof}
+            Пусть ряд равномерно сх-ся $\Leftrightarrow S_n \xRightarrow{D} S$\\
+            $\left| u_n(x) \right| = \left| S_n(x) - S_{n - 1}(x)\right|
+            \le \left| S_n(x) - S(x)\right| + \left| S(x) - S_{n - 1}(x)\right|
+            \le \varepsilon \ \forall x \in D$     
+        \end{proof} 
+        \item
+        \textbf{Признак Вейерштрасса}
+
+        Пусть $\underset{x \in D}{sup} \left| u_n(x)\right| \le a_n
+        \ \forall n \ge m.$\\
+        $\displaystyle \sum^{\infty}_{1} u_n(x)$ сходится $\Rightarrow \displaystyle
+        \sum^{\infty}_{1} u_n(x)$ сходится равномерно к D
+
+        \begin{proof}
+            $\left| S_{n + p}(x) - S_n(x)\right| = \left| \displaystyle
+            \sum^{n + p}_{k = n + 1} u_k(x) \right| \le \displaystyle
+            \sum^{n + p}_{k = n + 1} \ \forall x \in D \Rightarrow$\\
+            $\left| S_{n + p}(x) - S_n(x) \right| < \varepsilon \ \forall x
+            \in D \ \forall p \ \forall n \ge N(\varepsilon) \Rightarrow$
+            по критерию Коши ряд равномерно сходится.
+        \end{proof}
+        \begin{Examples}
+            $\displaystyle \sum^{\infty}_{1} nsin(nx) \cdot
+            (ln(n^3 + 1) - 3ln(n)) = \displaystyle \sum^{\infty}_{1} nsin(nx)
+            \cdot ln(1 + \dfrac{1}{n^3})$
+        \end{Examples}
+
+        \item
+        Признаки равн. сх-ти Дирихле и Абеля\\
+        \begin{Definition}
+            Посл-ть $\scalebox{1.2}{$\{ f_n(x) \}^{\infty}_{n = 1}$}$ наз-ся
+            \textbf{равн. ограниченной на D}, если $\ \exists \  c > 0:
+            \underset{x \in D}{sup} \left| f_n(x) \right| \le c \ \forall n$
+        \end{Definition}
+        \begin{itemize}
+            \item
+                Признак Дирихле:\\
+                $\displaystyle \sum^{\infty}_{1} a_n(x) \cdot b_n(x)$
+                сходится, если:\\
+                1) $\{a_n(x)\} \xRightarrow{D} 0$ и $\{ a_n(x)\}$ монотон.
+                $\ \forall x \in D$ \\
+                2) $\displaystyle \sum^{\infty}_{k = 1} b_k(x)$ равн. огр. на D\\
+                $\Rightarrow \displaystyle \sum^{\infty}_{1} a_n(x)
+                \cdot b_n(x)$ равн. сх-ся на D
+            \item
+                Признак Абеля:\\
+                $\displaystyle \sum^{\infty}_{1} a_n(x) \cdot b_n(x)$
+                сходится, если:\\
+                1) $\{a_n(x)\}$ равномерно огр. на D и $\{ a_n(x)\}$ монотон.
+                $\ \forall x \in D$ \\
+                2) $\displaystyle \sum^{\infty}_{k = 1} b_k(x)$ равн. сх-ся на D\\
+                $\Rightarrow \displaystyle \sum^{\infty}_{1} a_n(x)
+                \cdot b_n(x)$ равн. сх-ся на D
+        \end{itemize}
+    \end{enumerate}
+
+\end{document}
