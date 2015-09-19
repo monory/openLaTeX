@@ -1,0 +1,226 @@
+\documentclass[a4paper, 12pt]{article}
+\usepackage[english,russian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[left=2cm,right=2cm,top=1cm,bottom=2cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\usepackage{relsize}
+\usepackage{microtype}
+\usepackage{graphicx}
+
+
+\renewcommand{\qedsymbol}{$\blacksquare$}
+
+\everymath{\displaystyle}
+
+\newtheorem{Definition}{Определение}
+\newtheorem{Lemma}{Лемма}
+\newtheorem{Examples}{Примеры}
+\newtheorem{Consequence}{Следствие}
+\newtheorem{Thm}{Теорема}
+\newtheorem{Note}{Замечание}
+
+\title{Математический анализ 3.\\Лекция 5.}
+\author{Лепский Александр Евгеньевич
+        \footnote{лекция записана Жуковым Иваном (группа 145)}}
+\begin{document}
+    \maketitle
+
+    \begin{Examples}
+    \leavevmode
+        \begin{enumerate}
+            \item
+                \(\sum^{\infty}_{0} x^n, D =[-\alpha; \alpha]; 0 < \alpha < 1\)
+
+                По пр. Вейерштрасса
+
+                \( sup \left| x^n \right|  \le \alpha^n \ \forall n, 
+                \sum^{\infty}_{1} \alpha^n\) сходится \( \Rightarrow
+                \sum^{\infty}_{0} x^n\) на \(D = [-\alpha; \alpha]\)
+            \item
+                \( \sum^{\infty}_{0} x^n, D = [0; 1] \) \\
+                \( \underset{x \in D}{\sup} \left| r_n(x) \right| =
+                \underset{0 \le x < 1}{\sup} \sum^{\infty}_{k = n + 1} 
+                x^k = \sup \frac{x ^ {n + 1}}{1 - x}
+                = \infty \not \rightarrow 0\) при \(n \rightarrow \infty\)
+
+                Поэтому ряд рас-ся на D неравномерно.
+
+            \item
+                \( \sum^{\infty}_{1} \frac{sin(nx)}{n ^ \alpha}\) \\
+                \( D = [\varepsilon, 2\pi - \varepsilon], \varepsilon
+                \in (0, \pi)\)
+
+                По признаку Дирихле:
+
+                \( a_n(x) = sin(nx), \left| \sum^{n}_{1} a_k(x) \right| =
+                \left| \sum^{n}_{1}sin(kx) \right|
+                \le \frac{1}{\left| sin(\frac{1}{2}) \right|}\)
+
+                \( \underset{\varepsilon \le x \le 2\pi - \varepsilon}{\sup} 
+                \left| \sum^{n}_{1} a_k(x) \right| \le
+                \underset{\varepsilon \le x \le 2\pi - \varepsilon}{\sup}
+                \frac{1}{\left| sin(\frac{x}{2}) \right|} =
+                \frac{1}{sin(\frac{\varepsilon}{2})} \ \forall n \Rightarrow\)
+                равномерная ограниченность частичных сумм
+
+                По пр. Дирихле ряд равн. сх-ся на D
+
+            \item
+                \( \underset{0 \le \alpha \le 1}{\sum^{\infty}{1}
+                \frac{sin(nx)}{n ^ \alpha}}, D = [0, 2\pi]\)
+
+                \( \underset{0 \le x \le 2\pi}{\sup} \left| r_n(x) \right| =
+                \underset{0 \le x \le 2\pi}{\sup}
+                \left| \sum^{\infty}_{k = n + 1} \frac{sin(kx)}{k ^ \alpha}\right|
+                \ge 
+                \lim_{x_k = \frac{\pi}{2k} \rightarrow 0} \left|
+                \sum^{\infty}_{k = n + 1} \frac{sin(x_k)}{k^\alpha} \right| =
+                \sum^{\infty}_{k = n + 1} \frac{1}{k ^ \alpha} \rightarrow 0
+                \) при \(n \rightarrow \infty\), т.к
+                \(\sum^{\infty}_{1} \frac{1}{k ^ \alpha}\) расх.
+         \end{enumerate}
+
+         \newpage
+
+         \begin{center}
+             Аналитические свойства равномерно сх-ся посл-ей и рядов.
+         \end{center}
+
+         \begin{enumerate}
+             \item
+                Непрерывность:\\
+                \begin{Definition}
+                    \(\varphi(x)\) наз-ся \textbf{непр. в точке} \(x_0\) на множестве D, 
+                    если
+                    \(\ \forall \varepsilon > 0 \ \exists \sigma(\varepsilon):
+                    \left| \varphi(x) - \varphi(x_0) \right| < \varepsilon
+                    \ \forall x \in D \cap \{ x: \left| x - x_0 \right| < 
+                    \sigma\}\)
+                \end{Definition}
+
+                \begin{Thm}
+                    Пусть есть \(\scalebox{1.2}{\(\{f_n(x)\}^{\infty}_{n = 1}\)}\). Если \(f_n(x)\) непр. в D \(\ \forall n\) 
+                    и \(f_n \xrightarrow{D} f\),\\ то \(f\) непр. в D.
+                \end{Thm}
+
+                \begin{proof}
+                    \(\forall x_0 \in D \left| f(x) - f(x_0)\right| \le
+                    \varepsilon\)\\
+                    \(\le \underset{< \frac{\varepsilon}{3}
+                    ('cause f_n \xrightarrow{D} f)}{\left| f(x) - f_n(x) \right|}
+                    + \left| f_n(x) - f_n(x_0)\right| +
+                    \underset{< \frac{\varepsilon}{3}
+                    ('cause f_n \xrightarrow{D} f)}{\left| f_n(x_0) - f(x_0)\right|}\)
+                \end{proof}
+
+                \begin{Note}
+                    При выполнении условий
+                    \[ \lim_{x \rightarrow x_0} \lim_{n \rightarrow \infty}
+                    f_n(x) = \lim_{n \rightarrow \infty} \lim_{x \rightarrow x_0}
+                    f_n(x)\]
+                    \(\Rightarrow f\) - непр. на D. 
+                \end{Note}
+
+                \begin{Consequence}
+                    Если \( u_k(x) \) - непр. в D и \( \sum^{\infty}_{1} u_k(x)\)
+                     равн. сх-ся в D, то \(S(x) = \sum^{\infty}_{1} u_k(x)\) 
+                     - непр. в D
+                \end{Consequence}
+             \item
+                Интегрируемость:\\
+                \begin{Thm}
+                    \(\scalebox{1.2}{\(\{f_n(x)\}^{\infty}_{n = 1}\)}, f_n(x)\) 
+                    - непр. в \(D = [a; b]\)
+                    и \( f_n \xrightarrow{D} f\).Тогда
+                    \[\underset{= \Phi_n(x)}{\int^{x}_{a} f_n(t)dt}
+                    \xrightarrow{[a; b]} \underset{= \Phi(x)}{\int^{x}_{a}f(t)dt}\]
+                \end{Thm}
+
+                \begin{proof}
+                    Т.к. \(f_n\) - непр в D и \( f_n \xrightarrow{D} f\), 
+                    то по пред. теор. \(\Rightarrow f\) - непр. в D 
+                    \(\Rightarrow f\) - интегр. на \(D = [a; b]\) \\
+
+                    \( \left| \Phi_n(x) - \Phi(x) \right| \le \int^{x}_{a}
+                    \underset{< \varepsilon}{\left| f_n(t) - f(t)\right|}dt
+                    \le (b - a) \cdot \varepsilon\)
+                \end{proof}
+
+                \begin{Consequence}
+                    \(u_k(x)\) - непр. в \(D = [a; b] \ \forall k\) и ряд
+                    \(\sum^{\infty}_{1} u_k(x)\) равн. сх-ся на D.\\
+
+                    Тогда
+                    \[ \int^{x}_{a} \sum^{\infty}_{1} u_k(t)dt = 
+                    \sum^{\infty}_{k = 1} \int^{x}_{a} u_k(t)dt\]
+                \end{Consequence}
+
+                \begin{Note}
+                    Результат теоремы и её следствие можно усилить, 
+                    если непрерывность заменить на интегрируемость.
+                    (С сохранением условий равномерной сходимости)
+                \end{Note}
+
+                \newpage
+
+                \begin{Examples}
+                \leavevmode
+                    \begin{enumerate}
+                        \item 
+                            \( \sum^{\infty}_{1} \frac{x ^ {k - 1}}{k},
+                            x \in (-1; 1);
+                            [-\alpha; \alpha]; 0 < \alpha < 1\)\\
+                            \(\sum^{\infty}_{0} x^k\) - равн. сх-ся на
+                            \( [-\alpha; \alpha] \)\\
+
+                            \(\sum^{\infty}_{1} \frac{x ^ {k - 1}}{k} =
+                            \frac{ln(1 - x)}{x} - ln(1 - x) = 
+                            \int^{x}_{a} \frac{dt}{1 - t} = \int^{x}_{a} 
+                            (\sum^{\infty}_{k = 0} tk) dt \underset{теорема}{=}
+                            \sum^{\infty}_{k = 0} (\int^{x}_{0} t^kdt) = 
+                            \sum^{\infty}_{k = 0} \left.\frac{t ^ {k + 1}}{k + 1}
+                            \right|^{x}_{0} =\sum^{\infty}_{k = 0} 
+                            \frac{x ^ {k + 1}}{k + 1} = \sum^{\infty}_{k = 1} 
+                            \frac{x ^ k}{k} = x \cdot \sum^{\infty}_{k = 1} 
+                            \frac{x^{k = 1}}{l}\) непр. в D
+                    \end{enumerate}
+                \end{Examples}
+             \item 
+                Дифференциируемость:\\
+
+                \begin{Thm}
+                    Пусть
+                    \begin{enumerate}
+                        \item 
+                            \(f_n(x)\) - непр. диф. в \(D = [a; b]\)
+                        \item
+                            \( f'_n \xrightarrow{D} \varphi\)
+                        \item
+                        \(\exists c \in [a; b]: \sum^{\infty}_{1} f_n(c)\) - сход. т.е. \( \Rightarrow f_n \xrightarrow{D} f\)
+                            
+                    \end{enumerate}
+                    Тогда
+                    \[f' = \varphi
+                    \Leftrightarrow (\lim_{n \rightarrow \infty} f_n(x))' =
+                    \lim_{n \rightarrow \infty} f'_n(x)\]
+
+                    \begin{proof}
+                        \begin{equation}
+                            f_n(x) - f_n(c) = \int^{x}_{c} f'_n(t)dt
+                            \underset{theorem}{\xrightarrow{D}}
+                            \int^{x}_{c} \varphi(t)dt \Rightarrow f_n
+                            \xrightarrow{D} f
+                        \end{equation}
+
+                        В пределе в (1) при \(n \rightarrow \infty\):\\
+                        \(f(x) - f(c) = \int^{x}_{c} \varphi(t)dt\) - диф. ф-я
+                        \( \Rightarrow\ f'(x) = \varphi(x)\)
+                    \end{proof}
+                \end{Thm}
+         \end{enumerate}
+    \end{Examples}
+\end{document}
