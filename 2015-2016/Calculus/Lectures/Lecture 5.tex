@@ -1,7 +1,7 @@
 \documentclass[a4paper, 12pt]{article}
 \usepackage[english,russian]{babel}
 \usepackage[utf8]{inputenc}
-\usepackage[left=2cm,right=2cm,top=1cm,bottom=2cm]{geometry}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{amsthm}
@@ -23,7 +23,7 @@
 \newtheorem{Thm}{Теорема}
 \newtheorem{Note}{Замечание}
 
-\title{Математический анализ 3.\\Лекция 5.}
+\title{\vspace{-2.0cm}Математический анализ 3.\\Лекция 5.}
 \author{Лепский Александр Евгеньевич
         \footnote{лекция записана Жуковым Иваном (группа 145)}}
 \begin{document}
@@ -35,7 +35,7 @@
             \item
                 \(\sum^{\infty}_{0} x^n, D =[-\alpha; \alpha]; 0 < \alpha < 1\)
 
-                По пр. Вейерштрасса
+                По признаку Вейерштрасса:
 
                 \( sup \left| x^n \right|  \le \alpha^n \ \forall n, 
                 \sum^{\infty}_{1} \alpha^n\) сходится \( \Rightarrow
@@ -47,7 +47,7 @@
                 x^k = \sup \frac{x ^ {n + 1}}{1 - x}
                 = \infty \not \rightarrow 0\) при \(n \rightarrow \infty\)
 
-                Поэтому ряд рас-ся на D неравномерно.
+                Поэтому ряд расходитсяся на D неравномерно.
 
             \item
                 \( \sum^{\infty}_{1} \frac{sin(nx)}{n ^ \alpha}\) \\
@@ -65,9 +65,9 @@
                 \underset{\varepsilon \le x \le 2\pi - \varepsilon}{\sup}
                 \frac{1}{\left| sin(\frac{x}{2}) \right|} =
                 \frac{1}{sin(\frac{\varepsilon}{2})} \ \forall n \Rightarrow\)
-                равномерная ограниченность частичных сумм
+                равномерная ограниченность частичных сумм.
 
-                По пр. Дирихле ряд равн. сх-ся на D
+                По признаку Дирихле ряд равномерно сходится на D.
 
             \item
                 \( \underset{0 \le \alpha \le 1}{\sum^{\infty}{1}
@@ -81,20 +81,20 @@
                 \sum^{\infty}_{k = n + 1} \frac{sin(x_k)}{k^\alpha} \right| =
                 \sum^{\infty}_{k = n + 1} \frac{1}{k ^ \alpha} \rightarrow 0
                 \) при \(n \rightarrow \infty\), т.к
-                \(\sum^{\infty}_{1} \frac{1}{k ^ \alpha}\) расх.
+                \(\sum^{\infty}_{1} \frac{1}{k ^ \alpha}\) расходится.
          \end{enumerate}
 
          \newpage
 
          \begin{center}
-             Аналитические свойства равномерно сх-ся посл-ей и рядов.
+             Аналитические свойства равномерно сходящихся последовательностей и рядов.
          \end{center}
 
          \begin{enumerate}
              \item
                 Непрерывность:\\
                 \begin{Definition}
-                    \(\varphi(x)\) наз-ся \textbf{непр. в точке} \(x_0\) на множестве D, 
+                    \(\varphi(x)\) называется \textbf{непрерывной в точке} \(x_0\) на множестве D, 
                     если
                     \(\ \forall \varepsilon > 0 \ \exists \sigma(\varepsilon):
                     \left| \varphi(x) - \varphi(x_0) \right| < \varepsilon
@@ -103,8 +103,8 @@
                 \end{Definition}
 
                 \begin{Thm}
-                    Пусть есть \(\scalebox{1.2}{\(\{f_n(x)\}^{\infty}_{n = 1}\)}\). Если \(f_n(x)\) непр. в D \(\ \forall n\) 
-                    и \(f_n \xrightarrow{D} f\),\\ то \(f\) непр. в D.
+                    Пусть есть \(\scalebox{1.2}{\(\{f_n(x)\}^{\infty}_{n = 1}\)}\). Если \(f_n(x)\) непрерывна в D \(\ \forall n\) 
+                    и \(f_n \xrightarrow{D} f\),\\ то \(f\) непрерывна в D.
                 \end{Thm}
 
                 \begin{proof}
@@ -122,28 +122,28 @@
                     \[ \lim_{x \rightarrow x_0} \lim_{n \rightarrow \infty}
                     f_n(x) = \lim_{n \rightarrow \infty} \lim_{x \rightarrow x_0}
                     f_n(x)\]
-                    \(\Rightarrow f\) - непр. на D. 
+                    \(\Rightarrow f\) --- непрерывна на D. 
                 \end{Note}
 
                 \begin{Consequence}
-                    Если \( u_k(x) \) - непр. в D и \( \sum^{\infty}_{1} u_k(x)\)
-                     равн. сх-ся в D, то \(S(x) = \sum^{\infty}_{1} u_k(x)\) 
-                     - непр. в D
+                    Если \( u_k(x) \) --- непрерывна в D и \( \sum^{\infty}_{1} u_k(x)\)
+                     равномерно сходится в D, то \(S(x) = \sum^{\infty}_{1} u_k(x)\) 
+                     --- непрерывна в D.
                 \end{Consequence}
              \item
                 Интегрируемость:\\
                 \begin{Thm}
                     \(\scalebox{1.2}{\(\{f_n(x)\}^{\infty}_{n = 1}\)}, f_n(x)\) 
-                    - непр. в \(D = [a; b]\)
+                    --- непр. в \(D = [a; b]\)
                     и \( f_n \xrightarrow{D} f\).Тогда
                     \[\underset{= \Phi_n(x)}{\int^{x}_{a} f_n(t)dt}
                     \xrightarrow{[a; b]} \underset{= \Phi(x)}{\int^{x}_{a}f(t)dt}\]
                 \end{Thm}
 
                 \begin{proof}
-                    Т.к. \(f_n\) - непр в D и \( f_n \xrightarrow{D} f\), 
-                    то по пред. теор. \(\Rightarrow f\) - непр. в D 
-                    \(\Rightarrow f\) - интегр. на \(D = [a; b]\) \\
+                    Т.к. \(f_n\) --- непрерывна в D и \( f_n \xrightarrow{D} f\), 
+                    то по предыдущей теореме \(\Rightarrow f\) --- непрерывна в D 
+                    \(\Rightarrow f\) --- интегрируема на \(D = [a; b]\) \\
 
                     \( \left| \Phi_n(x) - \Phi(x) \right| \le \int^{x}_{a}
                     \underset{< \varepsilon}{\left| f_n(t) - f(t)\right|}dt
@@ -151,8 +151,8 @@
                 \end{proof}
 
                 \begin{Consequence}
-                    \(u_k(x)\) - непр. в \(D = [a; b] \ \forall k\) и ряд
-                    \(\sum^{\infty}_{1} u_k(x)\) равн. сх-ся на D.\\
+                    \(u_k(x)\) --- непрерывна в \(D = [a; b] \ \forall k\) и ряд
+                    \(\sum^{\infty}_{1} u_k(x)\) равномерно сходится на D.\\
 
                     Тогда
                     \[ \int^{x}_{a} \sum^{\infty}_{1} u_k(t)dt = 
@@ -162,7 +162,7 @@
                 \begin{Note}
                     Результат теоремы и её следствие можно усилить, 
                     если непрерывность заменить на интегрируемость.
-                    (С сохранением условий равномерной сходимости)
+                    (С сохранением условий равномерной сходимости).
                 \end{Note}
 
                 \newpage
@@ -174,19 +174,19 @@
                             \( \sum^{\infty}_{1} \frac{x ^ {k - 1}}{k},
                             x \in (-1; 1);
                             [-\alpha; \alpha]; 0 < \alpha < 1\)\\
-                            \(\sum^{\infty}_{0} x^k\) - равн. сх-ся на
+                            \(\sum^{\infty}_{0} x^k\) --- равномерно сходится на
                             \( [-\alpha; \alpha] \)\\
 
                             \(\sum^{\infty}_{1} \frac{x ^ {k - 1}}{k} =
                             \frac{ln(1 - x)}{x} - ln(1 - x) = 
                             \int^{x}_{a} \frac{dt}{1 - t} = \int^{x}_{a} 
-                            (\sum^{\infty}_{k = 0} tk) dt \underset{теорема}{=}
+                            (\sum^{\infty}_{k = 0} tk) dt \underset{\text{теорема}}{=}
                             \sum^{\infty}_{k = 0} (\int^{x}_{0} t^kdt) = 
                             \sum^{\infty}_{k = 0} \left.\frac{t ^ {k + 1}}{k + 1}
                             \right|^{x}_{0} =\sum^{\infty}_{k = 0} 
                             \frac{x ^ {k + 1}}{k + 1} = \sum^{\infty}_{k = 1} 
                             \frac{x ^ k}{k} = x \cdot \sum^{\infty}_{k = 1} 
-                            \frac{x^{k = 1}}{l}\) непр. в D
+                            \frac{x^{k = 1}}{l}\) непрывна в D
                     \end{enumerate}
                 \end{Examples}
              \item 
@@ -196,11 +196,11 @@
                     Пусть
                     \begin{enumerate}
                         \item 
-                            \(f_n(x)\) - непр. диф. в \(D = [a; b]\)
+                            \(f_n(x)\) --- непрерывная дифференцируемая функция в \(D = [a; b]\)
                         \item
                             \( f'_n \xrightarrow{D} \varphi\)
                         \item
-                        \(\exists c \in [a; b]: \sum^{\infty}_{1} f_n(c)\) - сход. т.е. \( \Rightarrow f_n \xrightarrow{D} f\)
+                        \(\exists c \in [a; b]: \sum^{\infty}_{1} f_n(c)\) --- сходится, т.е. \( \Rightarrow f_n \xrightarrow{D} f\)
                             
                     \end{enumerate}
                     Тогда
@@ -209,16 +209,16 @@
                     \lim_{n \rightarrow \infty} f'_n(x)\]
 
                     \begin{proof}
-                        \begin{equation}
+                        \begin{equation*}
                             f_n(x) - f_n(c) = \int^{x}_{c} f'_n(t)dt
                             \underset{theorem}{\xrightarrow{D}}
                             \int^{x}_{c} \varphi(t)dt \Rightarrow f_n
                             \xrightarrow{D} f
-                        \end{equation}
+                        \end{equation*}
 
                         В пределе в (1) при \(n \rightarrow \infty\):\\
-                        \(f(x) - f(c) = \int^{x}_{c} \varphi(t)dt\) - диф. ф-я
-                        \( \Rightarrow\ f'(x) = \varphi(x)\)
+                        \(f(x) - f(c) = \int^{x}_{c} \varphi(t)dt\) --- дифференцируемая функция
+                        \( \Rightarrow\ f'(x) = \varphi(x)\).
                     \end{proof}
                 \end{Thm}
          \end{enumerate}
