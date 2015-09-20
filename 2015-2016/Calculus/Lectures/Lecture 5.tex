@@ -47,7 +47,7 @@
                 x^k = \sup \frac{x ^ {n + 1}}{1 - x}
                 = \infty \not \rightarrow 0\) при \(n \rightarrow \infty\)
 
-                Поэтому ряд расходитсяся на D неравномерно.
+                Поэтому ряд расходится на D неравномерно.
 
             \item
                 \( \sum^{\infty}_{1} \frac{sin(nx)}{n ^ \alpha}\) \\
@@ -136,8 +136,8 @@
                     \(\scalebox{1.2}{\(\{f_n(x)\}^{\infty}_{n = 1}\)}, f_n(x)\) 
                     --- непр. в \(D = [a; b]\)
                     и \( f_n \xrightarrow{D} f\).Тогда
-                    \[\underset{= \Phi_n(x)}{\int^{x}_{a} f_n(t)dt}
-                    \xrightarrow{[a; b]} \underset{= \Phi(x)}{\int^{x}_{a}f(t)dt}\]
+                    \[\underset{= \Phi_n(x)}{\int^{x}_{a} f_n(t)\mathrm{d}t}
+                    \xrightarrow{[a; b]} \underset{= \Phi(x)}{\int^{x}_{a}f(t)\mathrm{d}t}\]
                 \end{Thm}
 
                 \begin{proof}
@@ -146,7 +146,7 @@
                     \(\Rightarrow f\) --- интегрируема на \(D = [a; b]\) \\
 
                     \( \left| \Phi_n(x) - \Phi(x) \right| \le \int^{x}_{a}
-                    \underset{< \varepsilon}{\left| f_n(t) - f(t)\right|}dt
+                    \underset{< \varepsilon}{\left| f_n(t) - f(t)\right|}\mathrm{d}t
                     \le (b - a) \cdot \varepsilon\)
                 \end{proof}
 
@@ -155,14 +155,14 @@
                     \(\sum^{\infty}_{1} u_k(x)\) равномерно сходится на D.\\
 
                     Тогда
-                    \[ \int^{x}_{a} \sum^{\infty}_{1} u_k(t)dt = 
-                    \sum^{\infty}_{k = 1} \int^{x}_{a} u_k(t)dt\]
+                    \[ \int^{x}_{a} \sum^{\infty}_{1} u_k(t)\mathrm{d}t = 
+                    \sum^{\infty}_{k = 1} \int^{x}_{a} u_k(t)\text{d}t.\]
                 \end{Consequence}
 
                 \begin{Note}
                     Результат теоремы и её следствие можно усилить, 
                     если непрерывность заменить на интегрируемость.
-                    (С сохранением условий равномерной сходимости).
+                    (С сохранением условий равномерной сходимости.)
                 \end{Note}
 
                 \newpage
@@ -173,20 +173,20 @@
                         \item 
                             \( \sum^{\infty}_{1} \frac{x ^ {k - 1}}{k},
                             x \in (-1; 1);
-                            [-\alpha; \alpha]; 0 < \alpha < 1\)\\
+                            [-\alpha; \alpha]; 0 < \alpha < 1\);\\
                             \(\sum^{\infty}_{0} x^k\) --- равномерно сходится на
-                            \( [-\alpha; \alpha] \)\\
+                            \( [-\alpha; \alpha] \);\\
 
                             \(\sum^{\infty}_{1} \frac{x ^ {k - 1}}{k} =
                             \frac{ln(1 - x)}{x} - ln(1 - x) = 
-                            \int^{x}_{a} \frac{dt}{1 - t} = \int^{x}_{a} 
-                            (\sum^{\infty}_{k = 0} tk) dt \underset{\text{теорема}}{=}
-                            \sum^{\infty}_{k = 0} (\int^{x}_{0} t^kdt) = 
+                            \int^{x}_{a} \frac{\mathrm{d}t}{1 - t} = \int^{x}_{a} 
+                            (\sum^{\infty}_{k = 0} tk) \mathrm{d}t \underset{\text{теорема}}{=}
+                            \sum^{\infty}_{k = 0} (\int^{x}_{0} t^k\mathrm{d}t) = 
                             \sum^{\infty}_{k = 0} \left.\frac{t ^ {k + 1}}{k + 1}
                             \right|^{x}_{0} =\sum^{\infty}_{k = 0} 
                             \frac{x ^ {k + 1}}{k + 1} = \sum^{\infty}_{k = 1} 
                             \frac{x ^ k}{k} = x \cdot \sum^{\infty}_{k = 1} 
-                            \frac{x^{k = 1}}{l}\) непрывна в D
+                            \frac{x^{k = 1}}{l}\) непрывна в D.
                     \end{enumerate}
                 \end{Examples}
              \item 
@@ -196,28 +196,28 @@
                     Пусть
                     \begin{enumerate}
                         \item 
-                            \(f_n(x)\) --- непрерывная дифференцируемая функция в \(D = [a; b]\)
+                            \(f_n(x)\) --- непрерывная дифференцируемая функция в \(D = [a; b]\);
                         \item
-                            \( f'_n \xrightarrow{D} \varphi\)
+                            \( f'_n \xrightarrow{D} \varphi\);
                         \item
-                        \(\exists c \in [a; b]: \sum^{\infty}_{1} f_n(c)\) --- сходится, т.е. \( \Rightarrow f_n \xrightarrow{D} f\)
+                        \(\exists c \in [a; b]: \sum^{\infty}_{1} f_n(c)\) --- сходится, т.е. \( \Rightarrow f_n \xrightarrow{D} f\);
                             
                     \end{enumerate}
                     Тогда
                     \[f' = \varphi
                     \Leftrightarrow (\lim_{n \rightarrow \infty} f_n(x))' =
-                    \lim_{n \rightarrow \infty} f'_n(x)\]
+                    \lim_{n \rightarrow \infty} f'_n(x).\]
 
                     \begin{proof}
-                        \begin{equation}
-                            f_n(x) - f_n(c) = \int^{x}_{c} f'_n(t)dt
+                        \begin{equation} \label{eq:1}
+                            f_n(x) - f_n(c) = \int^{x}_{c} f'_n(t)\mathrm{d}t
                             \underset{theorem}{\xrightarrow{D}}
-                            \int^{x}_{c} \varphi(t)dt \Rightarrow f_n
-                            \xrightarrow{D} f
+                            \int^{x}_{c} \varphi(t)\mathrm{d}t \Rightarrow f_n
+                            \xrightarrow{D} f.
                         \end{equation}
 
-                        В пределе в (1) при \(n \rightarrow \infty\):\\
-                        \(f(x) - f(c) = \int^{x}_{c} \varphi(t)dt\) --- дифференцируемая функция
+                        В пределе в \eqref{eq:1} при \(n \rightarrow \infty\):\\
+                        \(f(x) - f(c) = \int^{x}_{c} \varphi(t)\mathrm{d}t\) --- дифференцируемая функция
                         \( \Rightarrow\ f'(x) = \varphi(x)\).
                     \end{proof}
                 \end{Thm}
