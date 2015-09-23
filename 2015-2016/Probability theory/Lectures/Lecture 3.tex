@@ -1,0 +1,136 @@
+\documentclass[a4paper, 12pt]{article}
+\usepackage[english,russian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\usepackage{relsize}
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{url}
+
+
+\renewcommand{\qedsymbol}{$\blacksquare$}
+
+\everymath{\displaystyle}
+
+\theoremstyle{definition}
+\newtheorem{Definition}{Определение}
+\newtheorem{Lemma}{Лемма}
+\newtheorem{Examples}{Примеры}
+\newtheorem{Consequence}{Следствие}
+\newtheorem{Thm}{Теорема}
+\newtheorem{Note}{Замечание}
+
+\title{Теория вероятностей и математическая статистика.\\Лекция 3.
+    \footnote{Свёрстано Жуковым Иваном. Материал может содержать ошибки}}
+\author{}
+\date{16 сентября 2015}
+\begin{document}
+    \maketitle{}
+
+    \begin{Definition}
+        События \(A_1, \dots, A_n\) называются \textbf{независимыми в совокупности}, если для всех индексов
+        \( \underset{k = 2 \ldots n}{ 1 \le i_1 \le \ldots \le i_k \le n:}\)
+
+        \begin{equation}{\label{eq:1}}
+            P(A_{i_1} \dots A_{i_n}) = P(A_{i_1}) \cdot \ldots \cdot P(A_{i_n}) \tag{*}
+        \end{equation}
+
+        Если \(\eqref{eq:1}\) выполняется для \(k = 2\), то события называются \textbf{независимыми попарно}.
+    \end{Definition}
+
+    \begin{center}
+        \textit{Элементы теории надёжности}.
+    \end{center}
+
+    \begin{Definition}
+        Надёжностью системы называется вероятность её безотказной работы.
+    \end{Definition}
+
+    \begin{Definition}
+        \textbf{Схемой Испытаний Бернулли (СИБ)} называется модель по проведению \(n\) испытаний, удовлетворяющих трём условиям:
+            \begin{enumerate}
+                \item
+                    В каждом испытании возможно 2 исхода: \(A\  \text{и} \ \overline{A} \)
+                \item
+                    Все испытания независимы.
+                \item
+                    Значение \(P(A) = P\) не меняется во всех опытах. 
+            \end{enumerate}
+
+            Представим простой эксперимент в котором возможно два исхода: удача и неудача. Соответственно, вероятности удачи и неудачи обозначим за \(0 < p < 1\) и \(q = 1 - p\).
+
+            Теперь рассмотрим новый эксперимент, который заключается в \(n\)-кратном повторении эксперимента предыдущего.
+            \begin{itemize}
+                \item
+                    Тогда пространство элементарных событий можно представить как \(\Omega = (a_1, \ldots, a_n)\), где каждое элементарное событие \(a_i\) может принимать значения 1 или 0, в зависимости от успеха.
+                \item
+                    Пусть \(k\) - количество удачных опытов из n. Нетрудно заметить, что \(k = \sum^{n}_{1} a_i\).
+                \item
+                    Теперь каждому событию (обозначим его просто за \(\omega\)) сопоставим число --- вероятность успеха: \(p(\omega) = p^{\sum^{n}_{1} a_i} \cdot q^{n - {\sum^{n}_{1} a_i}} = p^k \cdot q^{n - k} \)
+                \item
+                    Пусть \(A_k = \{\omega| \sum^{n}_{1} a_i = k\} \). Тогда выполняется Теорема 1.
+            \end{itemize}
+    \end{Definition}
+
+    \newpage
+
+    \begin{Thm}
+        \textbf{Формула Бернулли}: \(P(A_k) = C^{k}_{n} \cdot p^k \cdot (1 - p)^{n - k}\)
+    \end{Thm}
+
+    \begin{proof}
+        \leavevmode
+        \begin{itemize}
+            \item
+                \(A_k = \) \{в \(n\) испытаниях \(k\) успехов\} \(= \{\omega| \sum^{n}_{1} a_i = k\}\);
+            \item
+                \(P(\omega) = p^k \cdot (1 - p)^{n - k}\)
+            \item
+                \(A_k = \sum_{\omega \in A_k} \omega \Rightarrow  P(A_k) = P(\sum_{\omega \in A_k}  \omega) =
+                \left| \text{события \(\omega\) несовместны} \right| = \sum_{\omega \in A_k} P(\omega) =\\
+                = C^{k}_{n} \cdot p^n \cdot (1 - p)^{n - k}\) 
+        \end{itemize}
+    \end{proof}
+
+    \begin{Note}
+        \(C^{k}_{n}\) --- из \(n\) опытов выбираем \(k\) удачных.
+    \end{Note}
+
+    \begin{Definition}
+        \textbf{Полиномиальная схема \footnote{материал взят с Википедии}}.
+
+        Обычная формула Бернули применима на случай, когда при каждом испытании возможно одно из двух событий. Формулу Бернулли
+        можно обобщить на случай, когда при каждом испытании происходит одно и только одно из  \(k > 2\)  событий с вероятностью
+        \(\underset{i = 1, 2, \ldots, k}{p_i}\), где \(\sum^{k}_{1} p_i = 1\) . Вероятность появления  \(m_1\)  раз первого события
+        и  \(m_2\)  - второго и  \(m_k\)  раз k-го находится по формуле
+
+        \[P_n(m_1,m_2,...,m_k)= \frac{n!}{m_1! m_2! \ldots m_k!} \cdot {p_1}^{m_1} \cdot {p_2}^{m_2} \cdot \ldots \cdot {p_k}^{m_k}\]
+        , где  \(n = m_1 + m_2 + \ldots +m_k\). 
+    \end{Definition}
+
+    \begin{Definition}
+        Случайные события \(H_1, \ldots, H_n \subset \Omega\) называются \textbf{полной группой событий}, если:
+            \begin{enumerate}
+                \item
+                    \(\underset{\text{несовместные}}{H_i \cdot H_j} = \varnothing\) при \(i \neq j\)
+                \item
+                    \(\sum^{n}_{1} H_i = \Omega\)
+            \end{enumerate}
+    \end{Definition}
+
+    \begin{Thm}
+        Пусть \(H_1, \ldots, H_n\) - полная группа событий и \(A \subset \Omega\). Тогда:
+        \[P(A) = \sum^{n}_{1} P(H_i) \cdot P(A / H_i)\]
+    \end{Thm}
+
+    \begin{proof}
+        \(P(A) = P(A \cdot \Omega) = P(A \cdot \sum^{n}_{1} H_i) = P(\underset{\subseteq H_1}{AH_1}
+        + \ldots + \underset{\subseteq H_n}{AH_n}) = \sum^{n}_{1}P(AH_i) =
+        \left| \text{т.к. \(H_1, \ldots, H_n\) несовместны} \right| = \sum^{n}_{1} P(H_i) \cdot P(A / H_i)\)
+    \end{proof}
+ \end{document}
