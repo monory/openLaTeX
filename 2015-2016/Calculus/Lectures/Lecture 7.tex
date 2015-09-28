@@ -9,6 +9,7 @@
 \usepackage{microtype}
 \usepackage{cleveref}
 \usepackage{multicol}
+\usepackage{hyperref}
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
 
 \let\oldemptyset\emptyset % для красивого пустого множества
@@ -66,6 +67,66 @@
         \end{gather*}
         
     \end{proof}
+\end{theorem}
+
+\section*{Ряды Тейлора}
+
+\begin{definition}
+    Пусть \(f(x)\) --- бесконечно дифференцируема в точке \(x_0\), тогда ряд
+    \begin{equation*}
+        \sum_{n = 0}^\infty \frac{f^{(n)}(x_0)}{n!}(x - x_0)^n
+    \end{equation*}
+    называется \emph{рядом Тейлора} функции \(f(x)\) в точке \(x_0\).
+\end{definition}
+
+При каких условиях ряд Тейлора функции \(f(x)\) сходится хотя бы в некоторой непустой окрестности \(x_0\)?
+
+\begin{example}
+    \begin{equation*}
+        f(x) = 
+        \begin{dcases}
+            e^{-\frac{1}{x}}; & x \neq 0\\
+            0; & x = 0
+        \end{dcases}
+    \end{equation*}
+
+    \emph{Свойства:}
+    \begin{itemize}
+        \item \(f(0) = 0\);
+        \item \(f'(0) = \lim_{x \rightarrow 0} \frac{f(x) - f(0)}{x} = \lim_{x \rightarrow 0} \frac{e^{-\frac{1}{x}}}{x} = \lim_{t \rightarrow \infty} \frac{t}{e^{t^2}} = 0\);
+        \item \(f^{(n)}(0) = 0\);
+    \end{itemize}
+
+    Ряд Тейлора для \(f(x) = 0\), что не равно \(f(x)\).
+\end{example}
+
+\begin{equation*}
+    f(x) = \sum_0^\infty c_n(x - x_0)^n  = \sum_{k = 0}^n c_k(x - x_0)^k + r_n(x).
+\end{equation*}
+
+\begin{theorem}
+    Если \(r_n \rightarrow 0\) при \(n \rightarrow \infty\), то функция \(f(x)\) представима в этой точке в виде ряда Тейлора.
+\end{theorem}
+
+\begin{effect}
+    Если \(f(x)\) бесконечно дифференцируема и все её производные равномерно ограничены в некоторой окрестности \(v_2(x_0)\), то функция представима рядом Тейлора в этой окрестности.
+\end{effect}
+
+\subsection*{Ряды Тейлора основных элементарных функций}
+
+\begin{enumerate}
+    \item \(e^x:\; c_n = \frac{1}{k!}\);
+    \item \(\sin(x):\; x - \frac{x^3}{3!} + \frac{x^5}{5!} - \dots\);
+    \item \(\cos(x):\; 1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \dots\);
+    \item \(\sh(x):\; x + \frac{x^3}{3!} + \frac{x^5}{5!} + \dots\);
+    \item \(\ch(x):\; 1 + \frac{x^2}{2!} + \frac{x^4}{4!} + \dots\);
+\end{enumerate}
+
+\subsection*{Интегральная форма остатка}
+Следующий материал взят с \href{http://neerc.ifmo.ru/wiki/index.php?title=%D0%9E%D1%81%D1%82%D0%B0%D1%82%D0%BE%D0%BA_%D1%84%D0%BE%D1%80%D0%BC%D1%83%D0%BB%D1%8B_%D0%A2%D0%B5%D0%B9%D0%BB%D0%BE%D1%80%D0%B0_%D0%B2_%D0%B8%D0%BD%D1%82%D0%B5%D0%B3%D1%80%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE%D0%B9_%D1%84%D0%BE%D1%80%D0%BC%D0%B5}{сайта ИТМО} и может отличаться от действительных лекций.
+
+\begin{theorem}
+    Пусть в окрестности точки \(x_0\) функция \(f(x)\) дифференцируема \(n + 1\) раз и её \((n + 1)\)-я производная интегрируема. Тогда в окрестности точки \(x_0\) \({f(x) = \sum\limits_{k = 0}^n \frac{f^{(k)} (x_0)}{k!}(x - x_0)^k + \frac1{n!} \int\limits_{x_0}^x f^{(n + 1)}(t) (x-t)^n dt}\). Эта формула называется формулой Тейлора с записью остатка в интегральной форме.
 \end{theorem}
 
 \end{document}
