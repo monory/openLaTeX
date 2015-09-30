@@ -1,0 +1,173 @@
+\documentclass[a4paper, 12pt]{article}
+\usepackage[english,russian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\usepackage{relsize}
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{url}
+
+
+\renewcommand{\qedsymbol}{$\blacksquare$}
+
+\everymath{\displaystyle}
+
+\theoremstyle{definition}
+\newtheorem{Definition}{Определение}
+\newtheorem{Lemma}{Лемма}
+\newtheorem{Examples}{Примеры}
+\newtheorem{Consequence}{Следствие}
+\newtheorem{Thm}{Теорема}
+\newtheorem{Note}{Замечание}
+
+\title{Теория вероятностей и математическая статистика.\\Лекция 5.
+    \footnote{Свёрстано Жуковым Иваном. Материал может содержать ошибки-хуешибки}}
+\author{}
+\date{30 сентября 2015}
+\begin{document}
+    \maketitle
+
+    \begin{center}
+        Вычисление функции распределения по ряду.
+    \end{center}
+
+    Пусть есть \(\Omega = \{\omega_1, \ldots, \omega_5\}\) и для \(\{\omega_1, \ldots, \omega_4\}\) известны
+    \(p_i = \underset{\sum^{n}_{1} p_i = 1}{P(\xi = x_i)}\).
+
+    Тогда \(p_5\) можно вычислить как \(P(\Omega) - \sum^{4}_{1}p_i = 1 - \sum^{4}_{1}p_i\) 
+
+    Функция распределения \(F_{\xi}(x) = P(\omega)\), \( \omega: \xi(\omega) \le x \)
+
+    % примеры вычисления значений функции распределения по ряду распределения (с графиком)
+
+    % \begin{tabular} {}}
+    %     Team \& \(-1\) \& \(2\) \& \(4\) \& \(5\) \\
+    % \end{tabular}
+
+    \begin{Definition}
+        Неотрицательная функция \(f_{\xi}(x)\), т.ч. \(F_{\xi}(x) = \int^{x}_{-
+        \infty} f(t) dt\), называется \textbf{плотностью распределения случайной величины} \(\xi\)
+    \end{Definition}
+
+    \begin{center}
+        Свойства плотности распределения случайной величины:
+        \begin{enumerate}
+            \item
+                \(\int^{+\infty}_{-\infty} f_{\xi}(x)dx = F_{\xi}(+\infty) = 1\)
+            \item
+                \(f_{\xi}(x) \ge 0 \ \forall x \in \mathbb{R}^1\)
+            \item
+                \(\int^{b}_{a} f_{\xi}(x)dx = F_{\xi}(b) - F_{\xi}(a) = P(\xi)\), \(a < \xi \le b\) 
+            \item
+                В точке непрерывности функции \(f_{\xi}: F'_{\xi} = f_{\xi}(x)\)
+
+                \(f_x = F'(x) = \underset{\Delta x \rightarrow 0}{\lim} \frac{F(x + \Delta x) - F(x)}{\Delta x} = 
+                \underset{\Delta x \rightarrow 0}{\lim} \frac{P(\xi + \Delta x) - P(\xi)}{\Delta x}\), \(\xi \le x\)
+
+                \(f(x) \cdot \Delta x \underset{\Delta x \rightarrow 0}{\approx} P(\xi + \Delta x)\), \(x < \xi \le x\) 
+        \end{enumerate}
+    \end{center}
+
+    \begin{Examples}
+    \leavevmode
+        \begin{itemize}
+            \item
+                Кантрова лестница:
+
+                \(F_{\xi} = \begin{cases}
+                    0, x \le 0, \\
+                    \scalebox{0.6}{$\frac{1}{2}$} \cdot F(3x), 0 \le x \le \frac{1}{3}, \\
+                    \scalebox{0.6}{$\frac{1}{2}$}, \scalebox{0.6}{$\frac{1}{3}$} \le x \le \scalebox{0.6}{$\frac{2}{3}$}, \\
+                    \scalebox{0.6}{$\frac{1}{2}$} + \scalebox{0.6}{$\frac{1}{2}$} \cdot F(3x - 2),
+                    \scalebox{0.6}{$\frac{1}{3}$} \le x \le 1
+                \end{cases}\)
+
+                \newpage
+
+                Пусть \(\frac{1}{3} \le x \le \frac{2}{3} \Rightarrow F(3x) = \frac{1}{2}\)
+                % график с лестницей
+        \end{itemize}
+    \end{Examples}
+
+    \begin{Lemma}
+        \(F_{\xi}(x) = \alpha_1 \cdot F_1(x) + \alpha_2 \cdot F_2(x) + \alpha_3 \cdot F_3(x)\),
+        где \(\alpha_i \ge 0, \ \alpha_1 + \alpha_2 + \alpha_3 = 1\)
+    \end{Lemma}
+
+    \begin{Note}
+        Т.к. в нашем курсе не будет сингулярных величин, то \textit{непрерывные величины} следует понимать как
+        \textit{\textbf{абсолютно} непрерывные величины}.
+    \end{Note}
+
+    \begin{center}
+        Числовые характеристики случайной величины.
+    \end{center}
+
+    % \begin{tabular} {l*{4} | r} ряд распределения
+        
+    % \end{tabular}
+
+    \begin{Definition}
+        \textbf{Математическим ожиданием} \textit{дискретной} случайной величины \(\xi\) называется число 
+        \[\underset{\text{или} M[\xi]}{E[\xi]} = \sum^{n}_{i = 1} x_i \cdot p_i\]
+    \end{Definition}
+
+    \begin{center}
+        Свойства \(E[\xi]\):
+        \begin{enumerate}
+            \item
+                \(E(c) = c\), где \(c\) - constant.
+            \item
+                \(E(c\xi) = \sum^{n}_{1} c p_i x_i = c \cdot E[\xi]\)
+            \item
+                Пусть \(a \le \xi \le b\), тогда \(a \le E[\xi] \le b\)
+
+                \(E[\xi] = \sum^{n}_{1} x_i p_i \le \sum^{n}_{1} b p_i = b \cdot \underset{= 1}{\sum^{n}_{1} p_i}\)
+            \item
+                \(E[\xi_1 + \xi_2] = E[\xi_1] + E[\xi_2]\)
+            \item
+                Пусть \(\eta = \varphi(\xi)\), тогда
+
+                % пример ряда распределения \eta (\varphi(x_i)) и p (p_i)
+
+                \(E[\eta] = \sum^{n}_{1} \varphi(x_i) p_i\)
+        \end{enumerate}
+    \end{center}
+
+    \begin{Definition}
+        \textbf{Дисперсией} случайной величины \(\xi\) называется число
+
+        \(D[\xi] = E_{[\xi - E_{[\xi]}]}^2\)
+    \end{Definition}
+
+    \begin{Definition}
+        \textbf{Среднеквадратическое отклонение} случайной величины \(\xi\) есть число
+
+        \(\sigma = \sqrt{D[\xi]}\)
+    \end{Definition}
+
+    \begin{center}
+        Свойства дисперсии случайной величины
+
+        \begin{enumerate}
+            \item
+                \(D[c] = 0\)
+            \item
+                \(D[c \xi] = E_{[c \xi - E_{[c \xi]} ]}^2\)
+            \item
+                \(D[\xi] = E_{[\xi^2 - 2 \xi E_{[\xi]} + ( E_{[\xi]} )^2]} =
+                E[\xi^2] - 2(E[\xi])^2 + (E[\xi])^2 = E[\xi^2] - (E[\xi])^2\)
+            \item
+                \(D[\xi] \ge 0 \ \forall \xi\)
+            \item
+                \(D[\xi_1 + \xi_2] = E[\xi_1 + \xi_2]^2 - ( E[\xi_1 + \xi_2] )^2 =
+                E[\xi_1]^2 + 2E[\xi_1 \xi_2] + E[\xi_2]^2 - \big( (E[\xi_1])^2 + 2E[\xi_1] \cdot E[\xi_2] + (E[\xi_2])^2 \big) = 
+                D[\xi_1] + D[\xi_2] + 2 (E[\xi_1 \xi_2] - E[\xi_1] \cdot E[\xi_2]) = cov(\xi_1, \xi_2)\) - ковариация \(\xi_1\) и \(\xi_2\)
+        \end{enumerate}
+    \end{center}
+\end{document}
