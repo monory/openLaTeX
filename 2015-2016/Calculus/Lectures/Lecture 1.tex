@@ -159,7 +159,7 @@
 \begin{example}
     \begin{gather*}
         \sum_{n=1}^{\infty} \frac{1}{n^\alpha};\; f(x) = \frac{1}{x^\alpha};\; [1;+\infty) f(x) \geqslant 0; \\
-        \int_{1}^{\infty} \frac{\mathrm{d}x}{x^\alpha} = \lim_{n \rightarrow \infty} \int_{1}^{n} \frac{\mathrm{d}x}{x^\alpha} = \left. \lim_{n \rightarrow \infty} \frac{1}{1 - \alpha} \cdot \frac{1}{x^{\alpha - 1}} \right |_1^n = \frac{1}{1 - \alpha} \lim_{n \rightarrow \infty} \left(n^{\frac{1}{\alpha - 1} - 1}\right); \\
+        \int_{1}^{\infty} \frac{\mathrm{d}x}{x^\alpha} = \lim_{n \rightarrow \infty} \int_{1}^{n} \frac{\mathrm{d}x}{x^\alpha} = \left. \lim_{n \rightarrow \infty} \frac{1}{1 - \alpha} \cdot \frac{1}{x^{\alpha - 1}} \right |_1^n = \frac{1}{1 - \alpha} \lim_{n \rightarrow \infty} \left({\frac{1}{n^{\alpha - 1}} - 1}\right); \\
         \begin{dcases}
             \infty & \quad \text{if } \alpha \leqslant 1 \\
             \frac{1}{\alpha - 1} & \quad \text{if } \alpha > 1;
@@ -183,7 +183,4 @@
     \end{gather*}
     Если \(a_n \sim b_n\) при \(n \rightarrow \infty\) (т.е. \(\frac{a_n}{b_n} = 1\)), то \(\sum a_n, \sum b_n\) сходятся или расходятся одновременно.
 \end{effect}
-
-
-
 \end{document}
