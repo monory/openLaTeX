@@ -46,11 +46,11 @@
     \begin{proof}
         Пусть \(\sum_1^\infty |a_n|\) сходится. Следовательно, по критерию Коши 
         \begin{gather*}
-            \forall \varepsilon > 0, p\; \exists n:\; \sum_{n+1}^{n+p} |a_n| < \varepsilon; \\
+            \forall \varepsilon > 0, \exists N(\varepsilon): \forall n > N\; \forall p \in \mathbb{N}:\ \sum_{n+1}^{n+p} |a_n| < \varepsilon; \\
             \left| \sum_1^\infty a_n \right| \leqslant \sum_1^\infty |a_n|.
         \end{gather*}
     \end{proof}
-    \item Если \(\sum_1^\infty a_n\), \(\sum_1^\infty b_n\) абсолютно сходятся и \(|b_n| \leqslant M \forall n\), то \(\sum_1^\infty a_n b_n\) тоже абсолютно сходится.
+    \item Если \(\sum_1^\infty a_n\), \(\sum_1^\infty b_n\) абсолютно сходятся и \(|b_n| \leqslant M \;\forall n\), то \(\sum_1^\infty a_n b_n\) тоже абсолютно сходится.
     \begin{proof}
         \(\left| \sum_1^\infty a_n b_n \right| \leqslant \left| M\sum_1^\infty a_n \right|\).
     \end{proof}
