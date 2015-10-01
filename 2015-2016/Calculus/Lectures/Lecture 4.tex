@@ -4,13 +4,12 @@
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
 \usepackage{amsmath}
 \usepackage{amsthm}
+\usepackage{amssymb}
 \usepackage{amsfonts}
 \usepackage{mathtools}
 \usepackage{relsize}
 \usepackage{graphicx}
 \usepackage{microtype}
-
-
 
 \newtheorem{Definition}{Определение}
 \newtheorem{Lemma}{Лемма}
@@ -30,11 +29,13 @@
         < \varepsilon \ \forall n > N(\varepsilon) \ \forall x \in D\]         
         \[f_n \xRightarrow{D} f\]
     \end{Definition}
+
     \begin{Lemma}
         Если $\exists \ a_n \xrightarrow{D} 0$ :
         \[ \left| f_m(x) - f(x)\right| \le a_n \ \forall x \in D \ \forall n
         \ge m\], то $f_m \Rightarrow f$
     \end{Lemma}
+
     \begin{Examples}
         \leavevmode
         \begin{enumerate}
@@ -70,7 +71,7 @@
     \begin{proof}
         1) Необходимость.\\
         Пусть $f_n \xRightarrow{D} f \Leftrightarrow$
-        \[\ \forall \varepsilon > 0 \ \exists N(\varepsilon):
+        \[\ \forall \varepsilon > 0 \ \exists N(\varepsilon) \; \forall n > N:
         \left| f_n(x) - f(x)\right| < \varepsilon \ \forall x \in D\]
 
         \[\left| f_{n + p}(x) - f_n(x)\right| \le
@@ -83,6 +84,8 @@
         p: \left| f_{n + p}(x) - f_n(x) \right| < \varepsilon \ \forall x
         \in D (1)$
 
+        \newpage
+
         2) Достаточность: пусть верно (1) \\
         $\ \forall$ фиксированного $x \in D$ из (1) $\Rightarrow$ $\{f_n(x)\}$
         - фундаментальная посл-ть вещ. чисел $\Rightarrow \ \exists
@@ -92,6 +95,7 @@
         $\left| f(x) - f_n(x) \right| < \varepsilon \ \forall x \in D
         \Rightarrow f_n \xRightarrow{D} f$
     \end{proof}
+
     \begin{Consequence}
         $f_n \not \xRightarrow{D} f \ \Leftrightarrow$\\
         $\ \exists \ \varepsilon_0
@@ -110,17 +114,19 @@
          \ N(\varepsilon, x): \left| S_n(x) - S(x) \right| < \varepsilon
          \ \forall n > N(\varepsilon, x)$
     \end{Definition}
+
     \begin{Definition}
         Ряд (2) сх-ся на D \textbf{равномерно}, если он сх-ся к $S(x),
         \ x \in D$ и\\
-        \[\ \forall \varepsilon > 0 \ \exists \  N(\varepsilon):
+        \[\ \forall \varepsilon > 0 \ \exists \  N(\varepsilon) \; \forall n > N:
         \left| S_n(x) - S(x)\right| < \varepsilon \ \forall x \in D \]
         \[\Leftrightarrow\]
         \[\underset{x \in D}{\sup} \left|r_n(x) \right| \rightarrow 0\]
-        при $n \rightarrow 0$ \\ 
+        при $n \rightarrow \infty$ \\ 
         $S_n(x) - S(x) = r_n(x) = \displaystyle
         \sum^{\infty}_{k = n + 1} u_k(x)$  - остаток ряда
     \end{Definition}
+
     \begin{Examples}
         \leavevmode
         \begin{enumerate}
@@ -129,7 +135,7 @@
             \alpha \in (0; 1)$ \\
             $S_n(x) = \displaystyle \sum ^{n}_{k = 0} x^k =
             \dfrac{1 - x^{n + 1}}{1 - x} \xrightarrow{D} \dfrac{1}{1 - x} = S(x)$
-            \[ \left| \underset{0 < x < 1}{sup} |r_n(x)| =  sup \left|
+            \[ \left| \underset{0 \leqslant x < 1}{sup} |r_n(x)| =  sup \left|
             \displaystyle \sum^{\infty}_{k = n + 1} x^k \right| \right| =
             sup \dfrac{x^{ n + 1}}{1 - x} = \infty \Rightarrow\]
             не является равном. сх-ся на D
@@ -173,15 +179,15 @@
         \item
         \textbf{Признак Вейерштрасса}
 
-        Пусть $\underset{x \in D}{sup} \left| u_n(x)\right| \le a_n
-        \ \forall n \ge m.$\\
+        Пусть $\underset{x \in D}{sup} \left| u_n(x)\right| \le a_m
+        \ \forall m \geqslant n.$\\
         $\displaystyle \sum^{\infty}_{1} u_n(x)$ сходится $\Rightarrow \displaystyle
         \sum^{\infty}_{1} u_n(x)$ сходится равномерно к D
 
         \begin{proof}
             $\left| S_{n + p}(x) - S_n(x)\right| = \left| \displaystyle
-            \sum^{n + p}_{k = n + 1} u_k(x) \right| \le \displaystyle
-            \sum^{n + p}_{k = n + 1} \ \forall x \in D \Rightarrow$\\
+            \sum^{n + p}_{k = n + 1} u_k(x) \right| \leqslant \displaystyle
+            \sum^{n + p}_{k = n + 1} \left| u_k(x) \right| \ \forall x \in D \Rightarrow$\\
             $\left| S_{n + p}(x) - S_n(x) \right| < \varepsilon \ \forall x
             \in D \ \forall p \ \forall n \ge N(\varepsilon) \Rightarrow$
             по критерию Коши ряд равномерно сходится.
@@ -196,7 +202,7 @@
         Признаки равн. сх-ти Дирихле и Абеля\\
         \begin{Definition}
             Посл-ть $\scalebox{1.2}{$\{ f_n(x) \}^{\infty}_{n = 1}$}$ наз-ся
-            \textbf{равн. ограниченной на D}, если $\ \exists \  c > 0:
+            \textbf{равномерно ограниченной на D}, если $\ \exists \  c > 0:
             \underset{x \in D}{sup} \left| f_n(x) \right| \le c \ \forall n$
         \end{Definition}
         \begin{itemize}
