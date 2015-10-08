@@ -33,7 +33,7 @@
 \date{02 сентября 2015}
 \title{\vspace{-2.0cm}Лекция по математическому анализу №1.}
 \frenchspacing
- 
+
 \maketitle
 
 
@@ -58,11 +58,11 @@
 \begin{example}
 \begin{gather*}
 	\sum^{\infty}_{n = 0} q^n;\; S_n = \sum^{n}_{k = 0} q^k = 1 + q + \dots + q^k = \frac{1 - q^{n+1}}{1-q}; \\
-	\lim_{n \rightarrow \infty} S_n = 
+	\lim_{n \rightarrow \infty} S_n =
 	\begin{cases}
 		\frac{1}{1 - q}; &|q| < 1; \\
 		\infty; &|q| \geqslant 1; \\
-		\nexists; &q = -1. 
+		\nexists; &q = -1.
 	\end{cases}
 \end{gather*}
 \end{example}
@@ -93,7 +93,7 @@
 \end{proof}
 
 \begin{effect}
-    Если \(a_n \nrightarrow 0\), то ряд расходится. 
+    Если \(a_n \nrightarrow 0\), то ряд расходится.
 \end{effect}
 
 \begin{note}
@@ -142,12 +142,12 @@
 \end{note}
 
 \begin{theorem}
-    Ряд \(\sum_{1}^{\infty};\;a_n \geqslant 0\) сходится \(\Leftrightarrow S_n = \sum_{1}^{n}\) ограничена.
+    Ряд \(\sum_{1}^{\infty} a_n \geqslant 0\) сходится \(\Leftrightarrow S_n = \sum_{1}^{n}\) ограничена.
 \end{theorem}
 
 \begin{proof}
     \emph{Необходимое условие:} \(\sum_{1}^{\infty}\) сходится \(\Rightarrow \exists \lim_{n \rightarrow \infty} S_n = S \Rightarrow \{S_n\}\) --- ограничена (из теории пределов);
-    
+
     \emph{Достаточное условие:} \(S_n \leqslant\; M\; \forall n\). \(S_n\) --- монотонная ограниченная последовательность \(\Rightarrow \exists \lim_{n \rightarrow \infty} S_n = S\).
 \end{proof}
 
@@ -164,7 +164,7 @@
             \infty & \quad \text{if } \alpha \leqslant 1 \\
             \frac{1}{\alpha - 1} & \quad \text{if } \alpha > 1;
         \end{dcases}
-    \end{gather*}    
+    \end{gather*}
 \end{example}
 
 
