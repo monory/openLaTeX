@@ -163,8 +163,25 @@
     \item
     \begin{enumerate}
         \item \(m(A \cup B) \leqslant m(A) + m(B)\);
+        \begin{proof}
+            \(m(A_1 \cup A_2) \leqslant m(A_1) + m(A_2)\); \\
+            \(\exists\) клеточные множества \(B_1, B_2: A_i \subseteq B_i;\; i \in \{1,2\};\)
+            \(m(B_i) - m(A_i) \leqslant \frac{\varepsilon}{2} \Rightarrow m(A_1 \cup A_2) \leqslant m(B_1 \cup B_2) \leqslant m(B_1) + m(B_2) \leqslant m(A_1) + m(A_2);\)
+        \end{proof}
         \item \(m\left(\bigcup_{i=1}^n A_i\right) \leqslant \sum_{i=1}^n m(A_i)\).
     \end{enumerate}
+    \item \(G\) --- измеримое множество в \(\mathbb{R}^n\), \\
+    \(G_h = \{(x_1, \ldots, x_n, x_{n+1}): (x_1, \ldots x_n) \in G, 0 \leqslant x_{n+1} \leqslant h\}\) \\
+    \(G_h\) --- цилиндрическое множество. \(G_h\) --- измеримое множество и \(m(G_h) = h \cdot m(G)\).
+    \begin{proof}
+        Из того, что \(G\) --- цилиндрическое множество \(\Rightarrow \exists A, B\) --- клеточные множества \(A \subseteq G \subseteq B, m(B) - m(A) < \varepsilon\). Пусть \(A_h, B_h\) --- цилиндрические множества над \(A\) и \(B\) соответственно.
+        \begin{gather*}
+            A_h \subseteq G_h \subseteq B_h; \\
+            m(A_h) = h \cdot m(A); \\
+            m(B_h) = h \cdot m(B); \\
+            m(B_h) - m(A_h) = h \cdot (m(B) - m(A)) \leqslant \varepsilon h \rightarrow 0.
+        \end{gather*}
+    \end{proof}
 \end{enumerate}
 
 
