@@ -1,0 +1,171 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathtext}
+\usepackage{mathtools}
+\usepackage{microtype}
+\usepackage{cleveref}
+\usepackage{multicol}
+\usepackage{hyperref}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\let\oldemptyset\emptyset % для красивого пустого множества
+\let\emptyset\varnothing
+
+\newtheorem*{theorem}{Теорема}
+\theoremstyle{remark}
+\newtheorem*{note}{Заметка}
+\newtheorem*{example}{Пример}
+\newtheorem*{property}{Свойство}
+\theoremstyle{definition}
+\newtheorem{definition}{Определение}
+\newtheorem*{effect}{Следствие}
+\newtheorem{question}{Вопрос}
+
+\everymath{\displaystyle}
+\begin{document}
+\sloppy
+\author{Чудинов Никита (группа 145)}
+\date{2 октября 2015}
+\title{\vspace{-2.0cm}Лекция по математическому анализу №8.}
+\frenchspacing
+
+\maketitle
+
+\emph{Мотивация:} вычисление объёма.\\
+Пусть в \(xOy\) задана фигура \(G\). \(z = f(x,y) \geqslant 0\;\forall (x,y) \in G\); \(f\) --- непрерывна над \(G\).
+
+\begin{theorem}
+    \begin{gather*}
+        G = \bigcup^n_{i = 1} G_i;\; G_i \cap G_j = \emptyset \; \forall i \neq j; \\
+        V \approx \sum_{i = 1}^n f(\xi_i) \underbrace{m(G_i)}_{\text{площадь}};\\
+        V = \lim_{n \rightarrow \infty} \sum_{i = 1}^n f(\xi_i)m(G_i);\; \max d(G_i) \rightarrow 0.
+    \end{gather*}
+\end{theorem}
+
+\begin{definition}[Диаметр множества]
+    \begin{equation*}
+        d(G_i) = \sup_{\vec{x}, \vec{y} \in G_i} d(\vec{x}, \vec{y}).
+    \end{equation*}
+\end{definition}
+
+\subsection*{Мера Жордана}
+
+Пусть \(G\) --- ограниченное множество в \(\mathbb{R}^n\).
+
+\begin{definition}
+    Клеткой П в \(\mathbb{R}^n\) называется структура вида
+    \begin{equation*}
+        \text{П} = \{(x_1 \ldots x_n): a_i \leqslant x_i < b_i \; \forall i = 1 \ldots n\}.
+    \end{equation*}
+\end{definition}
+
+\begin{definition}
+    \emph{Мера} клетки П равна
+    \begin{equation*}
+        m(\text{П}) = (b_1 - a_1)(b_2 - a_2) \ldots (b_n - a_n).
+    \end{equation*}
+\end{definition}
+
+\begin{property}
+    П\(_1 \cap\) П\(_2\) --- клетка.
+\end{property}
+
+\begin{definition}
+    Множество \(A\) называется \emph{клеточным}, если его можно представить в виде объединения конечного числа клеток.
+\end{definition}
+
+\begin{property}
+    \begin{equation*}
+        m(A) = \sum_{i=1}^n m(\text{П}_i).
+    \end{equation*}
+\end{property}
+
+\begin{theorem}
+    Мера клеточной фигуры не зависит от способа разбиения на клетки.
+
+    \begin{proof}
+        Пусть \(T_1: G = \bigcup_{i=1}^n \Pi_i\); \(T_2: G = \bigcup_{j=1}^m \Pi_j'\) \\
+        \begin{gather*}
+            \Pi_{ij} = \Pi_i \cap \Pi_j' \Rightarrow G = \bigcup_{i=1}^n \bigcup_{j=1}^m \Pi_{ij};\\
+            m(G) = \sum_{i=1}^n m(\Pi_i) = \sum_{i=1}^n \sum_{j=1}^m m(\Pi_{ij}) = \sum_{j=1}^m \left( \sum_{i=1}^n \Pi_{ij}\right) = \sum_{j=1}^m m(\Pi_j')
+        \end{gather*}
+    \end{proof}
+\end{theorem}
+
+
+\emph{Свойства клеточных множеств:}
+
+\begin{enumerate}
+    \item Если \(A\), \(B\) --- клеточные множества, то \(A \cap B\), \(A \cup B\), \(A \backslash B\) --- тоже клеточные множества (то есть множество всех клеточных множеств образует кольцо над \(\cup\) и  \(\cap\));
+    \item \(m(A) \geqslant 0\;\forall A\);
+    \item \emph{Конечная аддитивность:} \(m\left( \bigcup_{i=1}^n A_i\right) = \sum_{i=1}^n m(A_i)\) при \(A_i \cap A_j = \emptyset\; \forall i \neq j\);
+    \item \emph{Монотонность:} если \(A \subseteq B\), то \(m(A) \leqslant m(B)\);
+    \begin{proof}
+        \(m(B) = m(\underbrace{A \cup (B \backslash A)}_{\text{не пересекаются}}) = m(A) + m(B \backslash A) > A\);
+    \end{proof}
+    \item \(m \left(\bigcup_{i=1}^n A_i \right) \leqslant \sum_{i=1}^n m(A_i)\).
+\end{enumerate}
+
+\begin{definition}
+    Множество \(G\) называется \emph{измеримым} (по Жордану), если \(\forall \varepsilon > 0\:\exists \) клеточные множества \(A_\varepsilon, B_\varepsilon: A_\varepsilon \subset G \subset B_\varepsilon;\; m(B_\varepsilon) - m(A_\varepsilon) < \varepsilon\).
+\end{definition}
+
+\begin{definition}
+    Если \(G\) --- измеримое множество, то его мера \(m(A) < m(G) < m(B) \forall\) клеточных множеств \(A, B: A \subset G \subset B\).
+\end{definition}
+
+\begin{theorem}
+    Если \(G\) --- измеримо, то его \(m(G)\) существует, единственно и:
+    \begin{equation*}
+        m(G) = \sup_{A \subset G} m(A) = \inf_{G \subset B} m(B).
+    \end{equation*}
+
+    \begin{proof}
+        Так как \(\forall\) клеточных множеств \(A, B: A \subseteq G \subseteq B;\; m(A) \leqslant m(B)\), то по теореме об отделимости числовых рядов \(\Rightarrow \gamma : m(A) \leqslant \gamma \leqslant m(B) \Rightarrow m(G) = \gamma\) для любых клеточных множеств \(A \subseteq G \subseteq B\).
+
+        \emph{Единственность} от противного: \\
+        Пусть \(\exists \alpha < \beta: m(A) \leqslant \alpha < \beta \leqslant m(B)\;(\forall A,B: A \subseteq G \subseteq B)\).
+        Так как \(G\) --- измеримое, то \(\forall \varepsilon:(\beta - \alpha) < \varepsilon: \lim_{\varepsilon \rightarrow 0} (\beta - \alpha) = 0 \Rightarrow \alpha = \beta\).
+    \end{proof}
+
+    \begin{example}
+        \(G = \mathbb{Q} \cap (0, 1)\) --- не измеримо по Жордану.
+    \end{example}
+\end{theorem}
+
+\begin{definition}
+    Множество \(G\) называется \emph{множеством меры ноль}, если \(\forall \varepsilon > 0 \exists\) клеточное множество \(B: G \subseteq B;\; m(B) < \varepsilon\).
+\end{definition}
+
+\begin{property} \(\)
+    \begin{enumerate}
+        \item Любое конечное объединение множеств меры ноль --- тоже множество меры ноль;
+        \item Подмножество множества меры ноль --- тоже множество меры ноль.
+    \end{enumerate}
+\end{property}
+
+\begin{theorem}
+    Множество \(G\) измеримо \(\Leftrightarrow \underbrace{\partial G}_{\text{граница G}}\) --- множество меры 0.
+\end{theorem}
+
+\emph{Свойства измеримых множеств:}
+
+\begin{enumerate}
+    \item Если \(A, B\) --- измеримые множества, то \(A \cap B, A \cup B, A \backslash B\) --- измеримые множества;
+    \begin{proof}
+        Пусть \(A, B\) --- измеримы \(\Rightarrow m(\partial A) = 0 = m(\partial B)\); \(\partial(A \cup B) \subseteq \partial A \cup \partial B \Rightarrow m(\partial(A \cup B)) \leqslant m(\partial A \cup \partial B) \leqslant m(\partial A) + m(\partial B) = 0\).
+    \end{proof}
+    \item Если \(A, B\) --- измеримые множества, \(A \cap B = \emptyset\), то \(m(A \cup B) = m(A) + m(B)\);
+    \item
+    \begin{enumerate}
+        \item \(m(A \cup B) \leqslant m(A) + m(B)\);
+        \item \(m\left(\bigcup_{i=1}^n A_i\right) \leqslant \sum_{i=1}^n m(A_i)\).
+    \end{enumerate}
+\end{enumerate}
+
+
+\end{document}
